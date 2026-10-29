@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Онлайн-безпека: як говорити вдома · Батьківські збори</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:    #0F1520;
+  --s1:    #161E30;
+  --s2:    #1C2540;
+  --s3:    #222C4A;
+  --amber: #D4963A;
+  --amb-l: rgba(212,150,58,.1);
+  --cream: #F0E8D8;
+  --teal:  #2E9E8A;
+  --teal-l:rgba(46,158,138,.1);
+  --rose:  #C05870;
+  --rose-l:rgba(192,88,112,.09);
+  --slate: #6A8CB0;
+  --slate-l:rgba(106,140,176,.09);
+  --text:  #EDE8DF;
+  --muted: rgba(237,232,223,.52);
+  --dim:   rgba(237,232,223,.28);
+  --bd:    rgba(255,255,255,.07);
+  --bd2:   rgba(255,255,255,.13);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  font-family:'Nunito',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+}
+
+/* warm gradient mesh */
+body::before{
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 55% 45% at 10% 15%,rgba(212,150,58,.12) 0%,transparent 65%),
+    radial-gradient(ellipse 45% 55% at 90% 85%,rgba(46,158,138,.1) 0%,transparent 60%),
+    radial-gradient(ellipse 35% 35% at 55% 50%,rgba(106,140,176,.06) 0%,transparent 60%);
+}
+
+/* ── NAV ── */
+.snav{position:fixed;right:1.2rem;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:.55rem;z-index:300;}
+.snd{width:7px;height:7px;border-radius:50%;background:var(--bd2);border:none;cursor:pointer;padding:0;transition:all .3s;}
+.snd.on{background:var(--amber);transform:scale(1.6);}
+
+/* ── PROGRESS BAR ── */
+.prog-bar{position:fixed;top:0;left:0;height:3px;z-index:400;background:linear-gradient(90deg,var(--amber),var(--teal));transition:width .3s ease;width:0%;}
+
+/* ── HERO ── */
+.hero{
+  position:relative;z-index:2;
+  min-height:100vh;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  padding:3rem 1.5rem;text-align:center;
+}
+
+/* flame icon */
+.flame-deco{
+  font-size:4rem;margin-bottom:1.5rem;
+  animation:flicker 3s ease-in-out infinite;
+  display:block;
+}
+@keyframes flicker{
+  0%,100%{transform:scale(1) rotate(-1deg);filter:brightness(1);}
+  33%{transform:scale(1.05) rotate(1deg);filter:brightness(1.1);}
+  66%{transform:scale(.97) rotate(-2deg);filter:brightness(.95);}
+}
+
+.hero-tag{
+  font-size:.72rem;font-weight:700;letter-spacing:.2em;
+  color:var(--amber);margin-bottom:1.2rem;
+  display:flex;align-items:center;gap:.7rem;justify-content:center;
+}
+.hero-tag::before,.hero-tag::after{content:'';width:32px;height:1px;background:var(--amber);opacity:.5;}
+
+.hero h1{
+  font-family:'Lora',serif;
+  font-size:clamp(2.2rem,5.5vw,4.5rem);
+  font-weight:700;line-height:1.12;
+  color:var(--text);margin-bottom:.8rem;
+  letter-spacing:-.01em;
+}
+.hero h1 em{font-style:italic;color:var(--amber);}
+
+.hero-sub{
+  font-size:1.05rem;font-weight:400;line-height:1.85;
+  color:var(--muted);max-width:500px;margin:0 auto 2.5rem;
+}
+
+.hero-pills{display:flex;gap:.55rem;flex-wrap:wrap;justify-content:center;margin-bottom:1rem;}
+.hpill{
+  border:1px solid var(--bd2);border-radius:50px;
+  padding:.35rem 1rem;font-size:.77rem;font-weight:600;color:var(--muted);
+  background:rgba(255,255,255,.03);
+}
+
+.scroll-cue{
+  position:absolute;bottom:2rem;
+  display:flex;flex-direction:column;align-items:center;gap:.5rem;
+  font-size:.68rem;font-weight:600;color:var(--dim);letter-spacing:.1em;
+}
+.scroll-cue .line{width:1px;height:48px;background:linear-gradient(to bottom,var(--amber),transparent);animation:lineDrop 2.2s ease-in-out infinite;}
+@keyframes lineDrop{0%,100%{opacity:.25;transform:scaleY(.5) translateY(-12px);}50%{opacity:1;transform:scaleY(1) translateY(0);}}
+
+/* ── SECTIONS ── */
+.sec{position:relative;z-index:2;max-width:860px;margin:0 auto;padding:5.5rem 1.5rem;}
+.div{max-width:860px;margin:0 auto;height:1px;background:linear-gradient(90deg,transparent,var(--bd2),transparent);position:relative;z-index:2;}
+
+.sec-eyebrow{
+  font-size:.7rem;font-weight:700;letter-spacing:.16em;
+  color:var(--amber);margin-bottom:.9rem;
+  display:flex;align-items:center;gap:.55rem;
+}
+.sec-eyebrow::after{content:'';width:28px;height:1px;background:var(--amber);opacity:.5;}
+
+h2{
+  font-family:'Lora',serif;
+  font-size:clamp(1.7rem,3.5vw,2.7rem);
+  font-weight:700;line-height:1.2;
+  color:var(--text);margin-bottom:1rem;letter-spacing:-.01em;
+}
+h2 em{font-style:italic;color:var(--amber);}
+
+.lead{font-size:.97rem;font-weight:400;line-height:1.9;color:var(--muted);max-width:640px;margin-bottom:2rem;}
+
+/* ── PSYCHO ── */
+.psycho{
+  background:linear-gradient(135deg,rgba(46,158,138,.08),rgba(46,158,138,.03));
+  border-left:3px solid var(--teal);
+  border-radius:0 14px 14px 0;
+  padding:1.6rem 2rem;margin:2rem 0;position:relative;overflow:hidden;
+}
+.psycho::before{content:'"';font-family:'Lora',serif;font-size:6rem;line-height:1;color:var(--teal);opacity:.07;position:absolute;top:-.5rem;left:.8rem;}
+.psy-who{font-size:.66rem;font-weight:700;letter-spacing:.15em;color:var(--teal);margin-bottom:.6rem;}
+.psycho p{font-size:.94rem;line-height:1.85;color:rgba(237,232,223,.8);font-style:italic;font-family:'Lora',serif;}
+
+/* ── STAT CARDS ── */
+.stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1px;background:var(--bd);margin:2rem 0;border:1px solid var(--bd);}
+.stat-card{background:var(--s1);padding:1.5rem;text-align:center;}
+.stat-num{font-family:'Lora',serif;font-size:2.5rem;font-weight:700;color:var(--amber);line-height:1;margin-bottom:.4rem;}
+.stat-label{font-size:.78rem;font-weight:600;color:var(--muted);line-height:1.4;}
+
+/* ── AGE TABS ── */
+.age-tabs{display:flex;gap:.4rem;margin-bottom:1.5rem;flex-wrap:wrap;}
+.atab{background:var(--s1);border:1px solid var(--bd2);border-radius:6px;padding:.38rem 1rem;font-family:'Nunito',sans-serif;font-size:.8rem;font-weight:700;color:var(--muted);cursor:pointer;transition:all .2s;}
+.atab:hover{border-color:var(--bd2);color:var(--text);}
+.atab.on{background:var(--amber);border-color:var(--amber);color:var(--bg);}
+.age-panel{display:none;} .age-panel.on{display:block;}
+
+/* ── THREAT ACCORDION ── */
+.thr-list{margin:1.5rem 0;}
+.thr-item{border-bottom:1px solid var(--bd);}
+.thr-head{display:flex;align-items:center;gap:.9rem;padding:1.1rem 0;cursor:pointer;}
+.thr-head:hover .thr-title{color:var(--amber);}
+.thr-idx{font-family:'Lora',serif;font-size:1.2rem;font-weight:400;color:var(--dim);min-width:2rem;}
+.thr-title{font-size:.9rem;font-weight:700;color:var(--text);flex:1;transition:color .2s;}
+.thr-severity{font-size:.65rem;font-weight:700;letter-spacing:.07em;padding:.18rem .55rem;border-radius:3px;}
+.sev-high{background:rgba(192,88,112,.2);color:var(--rose);}
+.sev-med{background:rgba(212,150,58,.15);color:var(--amber);}
+.thr-arr{font-size:.7rem;color:var(--dim);transition:transform .25s;}
+.thr-item.open .thr-arr{transform:rotate(90deg);}
+.thr-body{display:none;padding:0 0 1.5rem 2.9rem;font-size:.87rem;font-weight:400;line-height:1.85;color:var(--muted);}
+.thr-item.open .thr-body{display:block;}
+.thr-signal{margin-top:.8rem;padding:.7rem 1rem;background:var(--s2);border-left:2px solid var(--amber);font-size:.8rem;color:var(--muted);}
+.thr-action{margin-top:.6rem;padding:.7rem 1rem;background:rgba(46,158,138,.07);border-left:2px solid var(--teal);font-size:.8rem;color:var(--muted);}
+
+/* ── CONVERSATION CARDS ── */
+.conv-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.9rem;margin:1.5rem 0;}
+.conv-card{background:var(--s1);border:1px solid var(--bd);border-radius:14px;padding:1.3rem;cursor:pointer;transition:all .25s;}
+.conv-card:hover{border-color:var(--bd2);transform:translateY(-2px);}
+.conv-card.open{border-color:var(--amber);background:var(--amb-l);}
+.conv-icon{font-size:1.7rem;margin-bottom:.55rem;display:block;opacity:.8;}
+.conv-title{font-size:.86rem;font-weight:700;color:var(--text);margin-bottom:.3rem;}
+.conv-body{font-size:.79rem;font-weight:400;color:var(--muted);line-height:1.6;display:none;}
+.conv-phrase{margin-top:.7rem;padding:.6rem .8rem;background:var(--s2);border-left:2px solid var(--amber);font-size:.8rem;color:var(--text);font-style:italic;display:none;}
+.conv-card.open .conv-body,.conv-card.open .conv-phrase{display:block;}
+
+/* ── QUIZ ── */
+.quiz-box{background:var(--s1);border:1px solid var(--bd);border-radius:18px;padding:2rem;margin:1.5rem 0;}
+.qz-prog{font-size:.7rem;font-weight:700;letter-spacing:.09em;color:var(--dim);margin-bottom:1rem;}
+.qz-q{font-family:'Lora',serif;font-size:1.08rem;font-weight:600;line-height:1.55;color:var(--text);margin-bottom:1.3rem;}
+.qz-opts{display:flex;flex-direction:column;gap:.5rem;}
+.qz-o{background:var(--s2);border:1px solid var(--bd);border-radius:10px;padding:.8rem 1.1rem;font-family:'Nunito',sans-serif;font-size:.87rem;font-weight:500;cursor:pointer;text-align:left;color:var(--muted);transition:all .2s;}
+.qz-o:hover{border-color:var(--bd2);color:var(--text);background:var(--s3);}
+.qz-o.ok{border-color:var(--teal);background:rgba(46,158,138,.12);color:var(--teal);font-weight:700;}
+.qz-o.bad{border-color:var(--rose);background:var(--rose-l);color:var(--rose);}
+.qz-o:disabled{cursor:not-allowed;}
+.qz-fb{font-size:.86rem;padding:.85rem 1rem;border-left:2px solid var(--bd2);margin-top:.8rem;display:none;line-height:1.75;color:var(--muted);}
+.qz-fb.show{display:block;}
+.qz-fb.ok{border-color:var(--teal);}
+.qz-fb.bad{border-color:var(--rose);}
+.qz-next{background:none;border:1px solid var(--bd2);border-radius:50px;padding:.55rem 1.6rem;margin-top:.85rem;font-family:'Nunito',sans-serif;font-size:.8rem;font-weight:700;color:var(--muted);cursor:pointer;transition:all .2s;display:none;letter-spacing:.03em;}
+.qz-next:hover{border-color:var(--amber);color:var(--amber);}
+.qz-next.show{display:inline-block;}
+.qz-score{font-family:'Lora',serif;font-size:1.6rem;font-weight:700;color:var(--amber);text-align:center;margin-top:1.5rem;display:none;font-style:italic;}
+
+/* ── SCENARIO GAME ── */
+.sc-box{background:var(--s1);border:1px solid var(--bd);border-radius:18px;overflow:hidden;margin:1.5rem 0;}
+.sc-hdr{background:linear-gradient(135deg,var(--amber),#B87A2A);padding:1rem 1.5rem;font-family:'Lora',serif;font-size:1rem;font-weight:700;color:var(--bg);display:flex;align-items:center;justify-content:space-between;}
+.sc-bar-wrap{height:3px;background:var(--bd);}
+.sc-bar-fill{height:100%;background:var(--teal);transition:width .4s;}
+.sc-body{padding:1.8rem;}
+.sc-q{font-family:'Lora',serif;font-size:1.05rem;font-weight:600;line-height:1.65;color:var(--text);margin-bottom:1.3rem;}
+.sc-opts{display:flex;flex-direction:column;gap:.5rem;}
+.sc-opt{background:var(--s2);border:1px solid var(--bd);border-radius:10px;padding:.8rem 1.1rem;font-family:'Nunito',sans-serif;font-size:.86rem;font-weight:500;cursor:pointer;text-align:left;color:var(--muted);transition:all .2s;}
+.sc-opt:hover{border-color:var(--bd2);color:var(--text);}
+.sc-opt.ok{border-color:var(--teal);background:rgba(46,158,138,.12);color:var(--teal);}
+.sc-opt.bad{border-color:var(--rose);background:var(--rose-l);color:var(--rose);}
+.sc-opt:disabled{cursor:not-allowed;}
+.sc-fb{font-size:.85rem;padding:.85rem 1rem;border-left:2px solid var(--bd2);margin-top:.9rem;display:none;line-height:1.75;color:var(--muted);}
+.sc-fb.show{display:block;}
+.sc-fb.ok{border-color:var(--teal);}
+.sc-fb.bad{border-color:var(--rose);}
+.sc-next{background:none;border:1px solid var(--bd2);border-radius:50px;padding:.55rem 1.6rem;margin-top:.85rem;font-family:'Nunito',sans-serif;font-size:.8rem;font-weight:700;color:var(--muted);cursor:pointer;transition:all .2s;display:none;}
+.sc-next:hover{border-color:var(--amber);color:var(--amber);}
+.sc-next.show{display:inline-block;}
+.sc-score{font-family:'Lora',serif;font-size:1.5rem;font-weight:700;color:var(--amber);text-align:center;margin-top:1.5rem;display:none;font-style:italic;}
+
+/* ── SAFETY PLAN ── */
+.plan-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(195px,1fr));gap:1px;background:var(--bd);border:1px solid var(--bd);margin:1.5rem 0;}
+.pf{background:var(--s1);padding:1.4rem;}
+.pf label{font-size:.63rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);display:block;margin-bottom:.5rem;}
+.pf input,.pf textarea{width:100%;background:transparent;border:none;border-bottom:1px solid var(--bd2);padding:.5rem 0;font-family:'Nunito',sans-serif;font-size:.84rem;color:var(--text);outline:none;resize:none;transition:border-color .2s;line-height:1.6;}
+.pf input:focus,.pf textarea:focus{border-color:var(--amber);}
+.pf input::placeholder,.pf textarea::placeholder{color:var(--dim);}
+.plan-gen{background:var(--amber);color:var(--bg);border:none;border-radius:50px;padding:.75rem 2rem;font-family:'Nunito',sans-serif;font-size:.88rem;font-weight:800;cursor:pointer;display:block;margin:1.5rem auto 0;transition:all .25s;letter-spacing:.03em;box-shadow:0 8px 24px rgba(212,150,58,.25);}
+.plan-gen:hover{transform:translateY(-2px);}
+.plan-result{display:none;margin-top:1.5rem;background:var(--s1);border:1px solid var(--bd2);border-radius:16px;padding:2rem;}
+.plan-result.show{display:block;}
+.plan-result h3{font-family:'Lora',serif;font-size:1.2rem;font-style:italic;text-align:center;color:var(--text);margin-bottom:1.3rem;}
+.pr-row{display:flex;gap:1rem;padding:.6rem 0;border-bottom:1px solid var(--bd);font-size:.85rem;}
+.pr-row:last-child{border:none;}
+.pr-l{color:var(--dim);font-size:.72rem;font-weight:700;letter-spacing:.05em;min-width:150px;}
+
+/* ── FINAL ── */
+.final{position:relative;z-index:2;max-width:680px;margin:0 auto;text-align:center;padding:5rem 1.5rem 7rem;}
+.final-icon{font-size:3.5rem;display:block;margin-bottom:1.5rem;}
+.final-cert{border:1px solid var(--bd2);border-radius:16px;padding:2rem;margin:2rem 0;text-align:left;}
+.fc-l{font-size:.62rem;font-weight:700;letter-spacing:.14em;color:var(--dim);margin-bottom:.4rem;}
+.fc-v{font-family:'Lora',serif;font-size:1rem;font-weight:400;color:var(--text);line-height:1.6;}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .7s,transform .7s;}
+.reveal.vis{opacity:1;transform:none;}
+</style>
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body data-mo-site="batky" data-mo-id="x3" data-mo-kind="parent" data-mo-sens="0"><nav class="mo-nav"><a href="../index.html">← Усі теми</a><span class="mo-t">Додатково · Онлайн-безпека: гайд для батьків</span><span class="mo-r"></span></nav>
+<div class="prog-bar" id="progBar"></div>
+
+<nav class="snav" id="sNav">
+  <button class="snd on" data-i="0"></button>
+  <button class="snd" data-i="1"></button>
+  <button class="snd" data-i="2"></button>
+  <button class="snd" data-i="3"></button>
+  <button class="snd" data-i="4"></button>
+  <button class="snd" data-i="5"></button>
+  <button class="snd" data-i="6"></button>
+  <button class="snd" data-i="7"></button>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="hero" id="s0">
+  <span class="flame-deco">🏠</span>
+  <div class="hero-tag">Батьківські збори · Онлайн-формат</div>
+  <h1>Онлайн-безпека:<br><em>як говорити вдома</em></h1>
+  <p class="hero-sub">Практичний посібник для батьків учнів 5–11 класів — що знати, що казати і як не нашкодити розмовою</p>
+  <div class="hero-pills">
+    <div class="hpill">⏱ 50 хвилин</div>
+    <div class="hpill">📊 Реальна статистика</div>
+    <div class="hpill">🗣️ Фрази для розмов</div>
+    <div class="hpill">🎯 Сценарії та вікторина</div>
+    <div class="hpill">📋 Сімейний план безпеки</div>
+  </div>
+  <div class="scroll-cue">
+    <span>починаємо</span>
+    <div class="line"></div>
+  </div>
+</section>
+
+<!-- ══ S1: ЧОМУ ЦЕ ВАЖЛИВО ══ -->
+<div class="div"></div>
+<section class="sec reveal" id="s1">
+  <div class="sec-eyebrow">Частина перша · Контекст</div>
+  <h2>Цифри, які змушують<br><em>діяти зараз</em></h2>
+  <p class="lead">Ми часто думаємо «моя дитина так не робить» або «ми вже говорили». Але статистика каже: більшість батьків не знають, що відбувається в онлайн-житті їхніх дітей. Не тому що погані батьки — а тому що цифровий світ змінився швидше, ніж наші розмови про нього.</p>
+
+  <div class="stat-row">
+    <div class="stat-card">
+      <div class="stat-num">87%</div>
+      <div class="stat-label">підлітків 12–15 р. спілкуються з незнайомцями онлайн</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">72%</div>
+      <div class="stat-label">не розповідають батькам про онлайн-проблеми</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">46%</div>
+      <div class="stat-label">стикались із небажаним сексуальним контентом</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">1 з 3</div>
+      <div class="stat-label">розкриттів грумінгу — після шкільної програми</div>
+    </div>
+  </div>
+
+  <div class="psycho">
+    <div class="psy-who">Порада психолога · Чому діти мовчать</div>
+    <p>Дослідження показують: діти мовчать про онлайн-проблеми не через байдужість батьків. Три головні причини — страх «відберуть телефон», впевненість що «не зрозуміють», і сором. Ваше завдання як батьків — не «контролювати», а стати людиною, до якої дитина прийде сама. Ця різниця — ключова.</p>
+  </div>
+
+  <div class="age-tabs">
+    <button class="atab on" onclick="swAge('a56')">5–6 клас (11–12 р.)</button>
+    <button class="atab" onclick="swAge('a78')">7–8 клас (12–14 р.)</button>
+    <button class="atab" onclick="swAge('a911')">9–11 клас (14–17 р.)</button>
+  </div>
+
+  <div class="age-panel on" id="ap-a56">
+    <div style="background:var(--s1);border:1px solid var(--bd);border-radius:12px;padding:1.4rem">
+      <h3 style="font-family:'Lora',serif;font-size:1rem;margin-bottom:.8rem;color:var(--text)">5–6 клас: перший самостійний онлайн</h3>
+      <p style="font-size:.86rem;line-height:1.8;color:var(--muted)">Діти цього віку тільки отримали власний смартфон або більше свободи в мережі. Вони ще довіряють незнайомим, не вміють розпізнавати маніпуляцію. Найпоширеніші ризики: <strong style="color:var(--text)">небажаний контент, онлайн-знайомі, ігрові витрати</strong>. Час встановити перші правила — поки ще слухають.</p>
+    </div>
+  </div>
+  <div class="age-panel" id="ap-a78">
+    <div style="background:var(--s1);border:1px solid var(--bd);border-radius:12px;padding:1.4rem">
+      <h3 style="font-family:'Lora',serif;font-size:1rem;margin-bottom:.8rem;color:var(--text)">7–8 клас: соціальний тиск і перша романтика</h3>
+      <p style="font-size:.86rem;line-height:1.8;color:var(--muted)">Думка однолітків — максимально важлива. Соцмережі, месенджери, анонімні платформи. Перші романтичні контакти онлайн. Найпоширеніші ризики: <strong style="color:var(--text)">кібербулінг, грумінг, сексуалізований тиск у переписці</strong>. Розмова про «кому можна довіряти онлайн» — критична саме зараз.</p>
+    </div>
+  </div>
+  <div class="age-panel" id="ap-a911">
+    <div style="background:var(--s1);border:1px solid var(--bd);border-radius:12px;padding:1.4rem">
+      <h3 style="font-family:'Lora',serif;font-size:1rem;margin-bottom:.8rem;color:var(--text)">9–11 клас: цифрова самостійність і серйозні ризики</h3>
+      <p style="font-size:.86rem;line-height:1.8;color:var(--muted)">Майже повна самостійність онлайн. Романтичні стосунки з цифровим виміром. Вища ймовірність зіткнення з серйозними загрозами. Найпоширеніші ризики: <strong style="color:var(--text)">сексторшн, токсичні онлайн-стосунки, вплив деструктивного контенту</strong>. Ваша роль — не контроль, а ресурс і точка звернення.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ S2: ЗАГРОЗИ ══ -->
+<div class="div"></div>
+<section class="sec reveal" id="s2">
+  <div class="sec-eyebrow">Частина друга · Що знати</div>
+  <h2>Загрози, про які<br><em>батьки не знають</em></h2>
+  <p class="lead">Натисніть на кожну загрозу — дізнайтесь, як вона виглядає, які сигнали подає і що ви можете зробити.</p>
+
+  <div class="psycho">
+    <div class="psy-who">Порада психолога · Про страх батьків</div>
+    <p>Більшість батьків бояться самої теми: «якщо почну говорити — дитина злякається» або «я погано розбираюсь — буду виглядати безглуздо». Але дослідження показують: батьки, які відкрито говорять про онлайн-ризики, мають дітей, які вдвічі частіше звертаються по допомогу при проблемах. Ваша необізнаність — не перешкода для розмови. Ваша відкритість — достатня.</p>
+  </div>
+
+  <div class="thr-list">
+    <div class="thr-item">
+      <div class="thr-head" onclick="toggleThr(this)">
+        <span class="thr-idx">01</span>
+        <span class="thr-title">Кібербулінг</span>
+        <span class="thr-severity sev-high">Висока небезпека</span>
+        <span class="thr-arr">▶</span>
+      </div>
+      <div class="thr-body">
+        Цілеспрямоване онлайн-переслідування: образи, поширення особистих даних/фото, ізоляція в групових чатах, створення «чорних сторінок». На відміну від офлайн-булінгу — не зупиняється вдома, діє цілодобово, може бути анонімним. Закон України визнає кібербулінг правопорушенням.
+        <div class="thr-signal">⚑ Сигнали: дитина ховає екран, плаче після використання телефону, різко перестала користуватись певними платформами, погіршились стосунки з однокласниками.</div>
+        <div class="thr-action">↗ Ваші дії: не відбирайте телефон одразу — це може посилити ізоляцію. Слухайте без осуду. Зробіть скріншоти. Зверніться до школи і, за потреби, поліції.</div>
+      </div>
+    </div>
+    <div class="thr-item">
+      <div class="thr-head" onclick="toggleThr(this)">
+        <span class="thr-idx">02</span>
+        <span class="thr-title">Грумінг</span>
+        <span class="thr-severity sev-high">Висока небезпека</span>
+        <span class="thr-arr">▶</span>
+      </div>
+      <div class="thr-body">
+        Навмисне поетапне зближення дорослого з дитиною/підлітком онлайн з метою маніпуляції або завдання шкоди. Починається з невинного: «ти такий/а цікавий/а», «твої батьки тебе не розуміють». Через тижні або місяці — прохання надіслати фото, зустрітись. Характерна ознака: «давай нікому не казатимемо, що спілкуємось».
+        <div class="thr-signal">⚑ Сигнали: новий «особливий» онлайн-друг, якого дитина не хоче показувати; ховає переписку; стала отримувати подарунки/поповнення рахунку від незнайомих.</div>
+        <div class="thr-action">↗ Ваші дії: не паніктуйте і не звинувачуйте. Скажіть: «Якщо хтось онлайн просить зберегти таємницю — ти можеш прийти до мене без страху». Збережіть переписку, зверніться до кіберполіції: cyberpolice.gov.ua.</div>
+      </div>
+    </div>
+    <div class="thr-item">
+      <div class="thr-head" onclick="toggleThr(this)">
+        <span class="thr-idx">03</span>
+        <span class="thr-title">Сексторшн</span>
+        <span class="thr-severity sev-high">Висока небезпека</span>
+        <span class="thr-arr">▶</span>
+      </div>
+      <div class="thr-body">
+        Шантаж особистими інтимними зображеннями з метою отримати гроші або ще більше фото. Зображення могли бути надіслані добровільно, отримані обманом або вкрадені. 100% відповідальності — на кривднику. Дитина/підліток — жертва, а не співучасник злочину.
+        <div class="thr-signal">⚑ Сигнали: різка тривога, плач без пояснень, просить гроші «на щось важливе» і не пояснює, не виходить з кімнати, різко змінилась поведінка.</div>
+        <div class="thr-action">↗ Ваші дії: скажіть ОДРАЗУ: «Ти нічого не зробив/ла неправильно. Ми вирішимо це разом». НЕ платіть — це посилює шантаж. Зберіть докази. Кіберполіція 102 або cyberpolice.gov.ua. Не забирайте телефон — він потрібен як доказ.</div>
+      </div>
+    </div>
+    <div class="thr-item">
+      <div class="thr-head" onclick="toggleThr(this)">
+        <span class="thr-idx">04</span>
+        <span class="thr-title">Деструктивний контент</span>
+        <span class="thr-severity sev-med">Середня небезпека</span>
+        <span class="thr-arr">▶</span>
+      </div>
+      <div class="thr-body">
+        Контент, що пропагує самоушкодження, розлади харчування, нігілізм, екстремізм або суїцид. Алгоритми соцмереж можуть «затягнути» дитину через схожий контент навіть якщо вона не шукала. Підлітки з депресією або тривогою особливо вразливі.
+        <div class="thr-signal">⚑ Сигнали: цікавість до тем смерті або самоушкодження, нові незрозумілі символи або фрази, підписки на «темні» акаунти, зміни в харчуванні або тілесних звичках.</div>
+        <div class="thr-action">↗ Ваші дії: не реагуйте з криком «хто тобі це показав». Спокійно: «Я помітив/ла, що ти цікавишся цією темою. Розкажи мені більше». Якщо є ознаки самоушкодження — психолог одразу.</div>
+      </div>
+    </div>
+    <div class="thr-item">
+      <div class="thr-head" onclick="toggleThr(this)">
+        <span class="thr-idx">05</span>
+        <span class="thr-title">Ігрова та онлайн-залежність</span>
+        <span class="thr-severity sev-med">Середня небезпека</span>
+        <span class="thr-arr">▶</span>
+      </div>
+      <div class="thr-body">
+        ВООЗ визнала ігрову залежність хворобою (МКХ-11). Ознаки: нездатність зупинитись попри власне бажання, пріоритет гри над сном, їжею, навчанням і стосунками. Онлайн-ігри містять мікротранзакції, «бойові пропуски» і соціальний тиск («не покину команду»).
+        <div class="thr-signal">⚑ Сигнали: дитина агресує або плаче при необхідності зупинитись, пропускає сон, відмовляється від їжі, брехня про час в мережі.</div>
+        <div class="thr-action">↗ Ваші дії: не відбирайте різко — це викликає синдром відміни і агресію. Домовляйтесь про час заздалегідь. Шукайте причину залежності — часто це відхід від реальних проблем.</div>
+      </div>
+    </div>
+    <div class="thr-item">
+      <div class="thr-head" onclick="toggleThr(this)">
+        <span class="thr-idx">06</span>
+        <span class="thr-title">Порушення приватності та цифровий слід</span>
+        <span class="thr-severity sev-med">Середня небезпека</span>
+        <span class="thr-arr">▶</span>
+      </div>
+      <div class="thr-body">
+        Підлітки часто не розуміють, що публікація лишається назавжди — навіть «Stories» зберігаються в архівах і можуть бути знайдені. Геолокація, фото школи у формі, розклад в постах — все це інформація для потенційних загроз.
+        <div class="thr-signal">⚑ Сигнали: публікації з точною геолокацією, шкільним розкладом, деталями маршрутів.</div>
+        <div class="thr-action">↗ Ваші дії: не лайте — пояснюйте. «Я хочу показати тобі кое-що цікаве про те, як працюють алгоритми». Зробіть це разом — як дослідження, а не лекція.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ S3: ЯК ГОВОРИТИ ══ -->
+<div class="div"></div>
+<section class="sec reveal" id="s3">
+  <div class="sec-eyebrow">Частина третя · Практика</div>
+  <h2>Як говорити з дитиною:<br><em>фрази і підходи</em></h2>
+  <p class="lead">Натисніть на кожну ситуацію — отримайте конкретні фрази для розмови. Слова мають значення: одна неправильна фраза може закрити двері на місяці.</p>
+
+  <div class="psycho">
+    <div class="psy-who">Порада психолога · Про «правильні» і «неправильні» фрази</div>
+    <p>Батьки з добрими намірами часто кажуть фрази, які закривають розмову: «я ж казав/ла», «як ти могла», «я заберу телефон». Дитина чує це — і наступного разу приходить пізніше або не приходить взагалі. Мета не «правильна реакція», а — залишитись людиною, до якої прийдуть наступного разу.</p>
+  </div>
+
+  <div class="conv-grid">
+    <div class="conv-card" onclick="this.classList.toggle('open')">
+      <span class="conv-icon">🚪</span>
+      <div class="conv-title">Як почати розмову</div>
+      <div class="conv-body">Не чекайте «правильного моменту» — його не буде. Краще — в машині, під час прогулянки або за спільним заняттям. Не «нам треба поговорити» (це лякає), а —</div>
+      <div class="conv-phrase">«Я читав/ла одну статтю про те, що відбувається в інтернеті. Цікаво, а ти з таким стикався/лась?»</div>
+    </div>
+    <div class="conv-card" onclick="this.classList.toggle('open')">
+      <span class="conv-icon">😰</span>
+      <div class="conv-title">Якщо дитина злякана</div>
+      <div class="conv-body">Першим ділом — заспокоїти, а не з'ясовувати деталі. Дитина повинна відчути: прийти до вас — безпечно. Не кажіть «як це сталось» — кажіть —</div>
+      <div class="conv-phrase">«Я рада/ий, що ти прийшов/ла. Ти зробив/ла правильно. Зараз ти в безпеці — ми разом розберемось.»</div>
+    </div>
+    <div class="conv-card" onclick="this.classList.toggle('open')">
+      <span class="conv-icon">🤫</span>
+      <div class="conv-title">Про таємниці онлайн</div>
+      <div class="conv-body">Заздалегідь — не під час кризи — поясніть дитині правило «таємниці, яку треба розкрити». Не у форматі лекції, а —</div>
+      <div class="conv-phrase">«Якщо хтось онлайн просить нікому не казати, що ви спілкуєтесь — це сигнал. Приходь до мене одразу. Я не буду злитись.»</div>
+    </div>
+    <div class="conv-card" onclick="this.classList.toggle('open')">
+      <span class="conv-icon">📱</span>
+      <div class="conv-title">Правила без конфлікту</div>
+      <div class="conv-body">Правила, встановлені разом — виконуються частіше. Замість «у нас вдома такі правила» запропонуйте —</div>
+      <div class="conv-phrase">«Давай разом придумаємо правила для телефону вдома — щоб тобі було комфортно і мені спокійно. Що для тебе важливо?»</div>
+    </div>
+    <div class="conv-card" onclick="this.classList.toggle('open')">
+      <span class="conv-icon">🔒</span>
+      <div class="conv-title">Про особисті дані</div>
+      <div class="conv-body">Пояснюйте не через заборону, а через цікавість. Підлітки сприймають краще, коли їм показують «як це працює», а не просто кажуть «не можна» —</div>
+      <div class="conv-phrase">«Покажи мені, що можна дізнатись про людину тільки з її профілю. Давай разом перевіримо — і потім подивимось на твій.»</div>
+    </div>
+    <div class="conv-card" onclick="this.classList.toggle('open')">
+      <span class="conv-icon">💙</span>
+      <div class="conv-title">Якщо дитина постраждала</div>
+      <div class="conv-body">Найважливіший момент. Ваша перша реакція визначає, чи прийде дитина до вас наступного разу. Ніколи не кажіть «сама винна». Кажіть —</div>
+      <div class="conv-phrase">«Ти нічого не зробив/ла неправильно. Те, що сталось — не твоя провина. Я тут, і ми впораємось разом.»</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ S4: ВІКТОРИНА ══ -->
+<div class="div"></div>
+<section class="sec reveal" id="s4">
+  <div class="sec-eyebrow">Вікторина</div>
+  <h2>Перевір себе:<br><em>8 запитань для батьків</em></h2>
+  <p class="lead">Про загрози, закон і правильні реакції. Без підказок — лише ваш досвід і здоровий глузд.</p>
+
+  <div class="quiz-box">
+    <div class="qz-prog" id="qzProg">Питання 1 з 8</div>
+    <div class="qz-q" id="qzQ"></div>
+    <div class="qz-opts" id="qzOpts"></div>
+    <div class="qz-fb" id="qzFb"></div>
+    <button class="qz-next" id="qzNext" onclick="nextQz()">Наступне питання →</button>
+    <div class="qz-score" id="qzScore"></div>
+  </div>
+</section>
+
+<!-- ══ S5: СЦЕНАРІЇ ══ -->
+<div class="div"></div>
+<section class="sec reveal" id="s5">
+  <div class="sec-eyebrow">Активність · Гра</div>
+  <h2>Що б ви зробили?<br><em>8 батьківських дилем</em></h2>
+  <p class="lead">Реальні ситуації з батьківського досвіду. Вибирайте відповідь — дізнавайтесь, чи є кращий підхід.</p>
+
+  <div class="sc-box">
+    <div class="sc-hdr">
+      <span id="scHdrNum">Дилема 1 з 8</span>
+      <span id="scPts" style="font-size:.8rem;font-weight:600">0 / 8</span>
+    </div>
+    <div class="sc-bar-wrap"><div class="sc-bar-fill" id="scFill" style="width:12%"></div></div>
+    <div class="sc-body">
+      <div class="sc-q" id="scQ"></div>
+      <div class="sc-opts" id="scOpts"></div>
+      <div class="sc-fb" id="scFb"></div>
+      <button class="sc-next" id="scNext" onclick="nextSc()">Наступна дилема →</button>
+      <div class="sc-score" id="scScore"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ S6: СІМЕЙНИЙ ПЛАН ══ -->
+<div class="div"></div>
+<section class="sec reveal" id="s6">
+  <div class="sec-eyebrow">Практика</div>
+  <h2>Сімейний план<br><em>онлайн-безпеки</em></h2>
+  <p class="lead">Створіть спільний план — і обговоріть його з дитиною. Правила, прийняті разом, виконуються. Завантажте або зробіть скріншот і повісьте вдома.</p>
+
+  <div class="psycho">
+    <div class="psy-who">Порада психолога · Чому «договір» працює</div>
+    <p>Дослідження сімейної психотерапії: підлітки, які беруть участь у розробці правил, виконують їх у 3 рази частіше, ніж ті, кому правила «оголошують». Ваша дитина хоче відчувати, що її думка має вагу. Дайте їй цей шанс — і отримаєте партнера, а не опонента.</p>
+  </div>
+
+  <div class="plan-grid">
+    <div class="pf">
+      <label>Ім'я дитини</label>
+      <input type="text" id="pf1" placeholder="Ім'я...">
+      <br><br>
+      <label>Наші правила щодо екранного часу</label>
+      <textarea id="pf2" rows="3" placeholder="Напр.: до 21:00, не за їжею..."></textarea>
+    </div>
+    <div class="pf">
+      <label>Платформи, якими користуємось</label>
+      <textarea id="pf3" rows="2" placeholder="Instagram, TikTok, YouTube..."></textarea>
+      <br><br>
+      <label>Що залишається приватним</label>
+      <textarea id="pf4" rows="2" placeholder="Адреса, школа, маршрути..."></textarea>
+    </div>
+    <div class="pf">
+      <label>Якщо щось трапиться — дитина приходить до</label>
+      <input type="text" id="pf5" placeholder="Ім'я батька/матері...">
+      <br><br>
+      <label>Гаряча лінія (знаємо напам'ять)</label>
+      <input type="text" id="pf6" value="116 111 — безкоштовно, цілодобово">
+    </div>
+    <div class="pf">
+      <label>Наша обіцянка дитині</label>
+      <textarea id="pf7" rows="3" placeholder="Ми не будемо злитись, не забиратимемо телефон одразу..."></textarea>
+    </div>
+  </div>
+  <button class="plan-gen" onclick="genPlan()">Створити сімейний план 🏠</button>
+  <div class="plan-result" id="planRes">
+    <h3>Наш сімейний план онлайн-безпеки</h3>
+    <div id="planContent"></div>
+    <p style="font-size:.73rem;color:var(--dim);text-align:center;margin-top:1.3rem;letter-spacing:.07em">РОЗДРУКУЙТЕ · ОБГОВОРІТЬ РАЗОМ · ПОВІСЬТЕ ВДОМА</p>
+  </div>
+</section>
+
+<!-- ══ S7: ФІНАЛ ══ -->
+<div class="div"></div>
+<div class="final reveal" id="s7">
+  <span class="final-icon">🏠</span>
+  <div class="sec-eyebrow" style="justify-content:center">Зустріч завершена</div>
+  <h2>Ви вже робите<br><em>найважливіше</em></h2>
+  <p class="lead" style="margin:0 auto 2rem;text-align:center">Те, що ви тут — означає: ви хочете бути людиною, до якої дитина прийде. Це вже половина успіху.</p>
+  <div class="final-cert">
+    <div class="fc-l">Контакти допомоги</div>
+    <div class="fc-v">116 111 — Гаряча лінія для дітей (безкоштовно, цілодобово, анонімно)<br>cyberpolice.gov.ua — Кіберполіція України<br>102 — Поліція · 103 — Медики</div>
+    <br>
+    <div class="fc-l">Для батьків</div>
+    <div class="fc-v">0 800 500 335 — Безкоштовна психологічна допомога<br>Шкільний психолог — перший крок при підозрі на проблему</div>
+  </div>
+  <div class="psycho" style="text-align:left">
+    <div class="psy-who">Порада психолога · Фінальна порада</div>
+    <p>Ідеальних батьків не існує. Але батьки, які намагаються зрозуміти світ своєї дитини — це вже багато. Ваша дитина не потребує досконалості. Вона потребує вас — реальних, відкритих і готових слухати. Ви це можете.</p>
+  </div>
+</div>
+
+<script>
+// NAV + SCROLL PROGRESS
+const sIds=['s0','s1','s2','s3','s4','s5','s6','s7'];
+const snds=document.querySelectorAll('.snd');
+snds.forEach(d=>d.addEventListener('click',()=>document.getElementById(sIds[+d.dataset.i])?.scrollIntoView({behavior:'smooth'})));
+window.addEventListener('scroll',()=>{
+  const scrolled=(window.scrollY/(document.body.scrollHeight-window.innerHeight))*100;
+  document.getElementById('progBar').style.width=scrolled+'%';
+  sIds.forEach((id,i)=>{
+    const el=document.getElementById(id);if(!el)return;
+    const r=el.getBoundingClientRect();
+    if(r.top<=window.innerHeight*.55&&r.bottom>=window.innerHeight*.45){
+      snds.forEach(d=>d.classList.remove('on'));snds[i]?.classList.add('on');
+    }
+  });
+});
+document.querySelectorAll('.reveal').forEach(r=>
+  new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('vis')),{threshold:.06}).observe(r));
+
+// AGE TABS
+function swAge(n){
+  document.querySelectorAll('.age-panel').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.atab').forEach(b=>b.classList.remove('on'));
+  document.getElementById('ap-'+n).classList.add('on');
+  document.querySelectorAll('.atab').forEach(b=>{if(b.getAttribute('onclick')&&b.getAttribute('onclick').includes("'"+n+"'"))b.classList.add('on');});
+}
+
+// THREATS
+function toggleThr(head){head.parentElement.classList.toggle('open');}
+
+// QUIZ
+const qzData=[
+  {q:'Ваша дитина отримала образливе повідомлення від однокласника в месенджері. Ваша перша дія?',
+   opts:['Негайно забрати телефон — щоб захистити','Зробити скріншот повідомлення разом з дитиною, вислухати і потім вирішити наступні кроки','Самостійно написати кривднику','Порадити дитині ігнорувати'],
+   ans:1,exp:'✓ Правильно. Скріншот — ваш доказ. Важливо спочатку почути дитину — і тільки потім діяти. Відібраний телефон може підсилити відчуття ізоляції у жертви.'},
+  {q:'Що таке грумінг онлайн?',
+   opts:['Різновид кібербулінгу між однолітками','Поетапне маніпулятивне зближення дорослого з дитиною/підлітком з метою шкоди','Агресивна онлайн-реклама','Форма спаму'],
+   ans:1,exp:'✓ Так. Грумінг — не одноразова дія, а процес від тижнів до місяців. Ключова ознака: прохання тримати контакт у таємниці від батьків.'},
+  {q:'Дитина розповіла, що її шантажують фото. Як правильно відреагувати першими словами?',
+   opts:['"Як ти могла надіслати фото незнайомому?"','«Ти нічого не зробив/ла неправильно. Ми вирішимо це разом»','«Хто це? Дай мені телефон»','«Більше не надсилай фото — і все пройде»'],
+   ans:1,exp:'✓ Перша реакція визначає, чи прийде дитина до вас наступного разу. Провина і допити — закривають двері. Підтримка — відкриває.'},
+  {q:'Куди звертатись при сексторшні або грумінгу в Україні?',
+   opts:['Тільки до школи','Кіберполіція cyberpolice.gov.ua або 102','Служба захисту прав споживачів','Це вирішується самостійно'],
+   ans:1,exp:'✓ Кіберполіція — спеціалізований підрозділ для онлайн-злочинів. Сексторшн і грумінг — кримінальні злочини за законодавством України.'},
+  {q:'Правила використання інтернету вдома краще:',
+   opts:['Оголосити батькам — дитина повинна виконувати','Встановити разом з дитиною — обговоривши її потреби','Скопіювати з інтернету і роздрукувати','Не встановлювати — це обмежує свободу'],
+   ans:1,exp:'✓ Дослідження: правила, розроблені разом, виконуються у 3 рази частіше. Підліток, якого залучили до процесу, — партнер, а не опонент.'},
+  {q:'Як ВОЗ класифікує ігрову залежність?',
+   opts:['Як шкідливу звичку, але не хворобу','Як хворобу (МКХ-11) — Gaming Disorder','Не класифікує взагалі','Як нормальний підлітковий інтерес'],
+   ans:1,exp:'✓ Так. ВООЗ включила ігрове розлади до МКХ-11 у 2019 р. Критерії: нездатність контролювати ігровий час, пріоритет гри над іншими сферами, продовження попри негативні наслідки.'},
+  {q:'Що таке «цифровий слід»?',
+   opts:['Слід від мишки на екрані','Сукупність даних, залишених онлайн — включно зі «видаленими»','Технічний термін для cookie','Форма вірусу'],
+   ans:1,exp:'✓ Цифровий слід — все, що публікується або передається онлайн, залишається в архівах, кешах і скріншотах — навіть після «видалення».'},
+  {q:'Найважливіша річ, яку батьки можуть зробити для онлайн-безпеки дитини:',
+   opts:['Встановити батьківський контроль на всіх пристроях','Стати людиною, до якої дитина прийде при проблемі, не боячись реакції','Перевіряти переписку щодня','Заборонити соцмережі до 18 років'],
+   ans:1,exp:'✓ Технічний контроль не захищає від людей, які вміють маніпулювати. Захищає — довіра. Дитина, яка знає, що батьки вислухають без осуду, — звертається за допомогою.'},
+];
+let qzI=0,qzSc=0,qzAns=false;
+function loadQz(){
+  const q=qzData[qzI];
+  document.getElementById('qzProg').textContent=`Питання ${qzI+1} з ${qzData.length}`;
+  document.getElementById('qzQ').textContent=q.q;
+  const o=document.getElementById('qzOpts');o.innerHTML='';
+  q.opts.forEach((op,i)=>{const b=document.createElement('button');b.className='qz-o';b.textContent=op;b.onclick=()=>ansQz(i);o.appendChild(b);});
+  document.getElementById('qzFb').className='qz-fb';document.getElementById('qzNext').className='qz-next';qzAns=false;
+}
+function ansQz(i){
+  if(qzAns)return;qzAns=true;
+  const q=qzData[qzI];
+  document.querySelectorAll('.qz-o').forEach(b=>b.disabled=true);
+  const fb=document.getElementById('qzFb');
+  if(i===q.ans){document.querySelectorAll('.qz-o')[i].classList.add('ok');fb.className='qz-fb ok show';qzSc++;}
+  else{document.querySelectorAll('.qz-o')[i].classList.add('bad');document.querySelectorAll('.qz-o')[q.ans].classList.add('ok');fb.className='qz-fb bad show';}
+  fb.textContent=q.exp;document.getElementById('qzNext').className='qz-next show';
+}
+function nextQz(){
+  qzI++;
+  if(qzI<qzData.length){loadQz();return;}
+  document.getElementById('qzQ').textContent='';document.getElementById('qzOpts').innerHTML='';
+  document.getElementById('qzFb').className='qz-fb';document.getElementById('qzNext').className='qz-next';
+  document.getElementById('qzProg').textContent='Вікторину завершено';
+  const sc=document.getElementById('qzScore');sc.style.display='block';
+  const msgs=['Є над чим попрацювати — але ви вже тут! 💙','Непогано! Ви вже знаєте головне 🌱','Добре обізнані батьки — ваша дитина в кращих руках 🌿','Відмінно! Ви — ресурс для своєї дитини 🛡️'];
+  const t=Math.min(Math.floor(qzSc/(qzData.length/msgs.length)),msgs.length-1);
+  sc.textContent=`${qzSc} з ${qzData.length} — ${msgs[t]}`;
+}
+loadQz();
+
+// SCENARIOS
+const scenarios=[
+  {q:'Ви випадково побачили, що ваша дитина (14 р.) спілкується в месенджері з людиною, якої ви не знаєте. Запитуєте «хто це» — дитина різко закриває телефон і йде в кімнату. Що ви робите?',
+   opts:['Відбираю телефон і перевіряю всю переписку','Вибираю момент, коли дитина спокійніша, і кажу: «Я не шпигую, але помітив/ла незнайомий контакт. Мені важливо знати, що ти в безпеці. Можемо поговорити?»','Нічого — у підлітків мають бути таємниці','Розпитую одразу і наполегливо'],
+   ans:1,fb:'Відібраний телефон підриває довіру і не вирішує проблему. Спокійний діалог із поясненням вашого занепокоєння — відкриває двері, а не зачиняє.'},
+  {q:'Ваша дитина (12 р.) отримала в школі прізвисько, і тепер інші діти пишуть образливі коментарі під її публікаціями. Вона плаче і каже «я хочу видалити всі соцмережі». Ваша реакція?',
+   opts:['«Правильно, видали — давно треба було»','«Хто це? Дай мені їхні сторінки, я напишу їм»','Обійміть, вислухайте. Потім разом вирішіть: зберегти або видалити — це її вибір. Збережіть докази і зверніться до школи','«Не звертай уваги — вони просто заздрять»'],
+   ans:2,fb:'Рішення видалити соцмережі — має бути добровільним, не вимушеним. Збережіть докази перед цим. Кривдники порушили закон, і школа зобов\'язана реагувати.'},
+  {q:'Ваш підліток (15 р.) витрачає 8-9 годин на день в онлайн-іграх. Успішність впала, на вулицю не виходить. Що ви робите?',
+   opts:['Різко відключаю роутер і забираю всі пристрої','«Ти деградуєш! Ці ігри зроблять тебе нікчемою»','Сідаю поруч, граю разом кілька хвилин, а потім кажу: «Розкажи мені про цю гру. І розкажи, як ти себе відчуваєш в реальному житті»','Нічого — це пройде саме'],
+   ans:2,fb:'Різке відключення викликає синдром відміни і руйнує стосунки. Зацікавленість грою — вхід у розмову. Надмірна залежність часто є симптомом: депресія, соціальна тривога, шкільний стрес.'},
+  {q:'Дитина (13 р.) сказала, що «один дядько» в Telegram просить фото і каже, що вона «найгарніша з усіх, кого він знає». Дитина думає, що це «просто комплімент». Як реагуєте?',
+   opts:['"Негайно видали його і більше так не роби!"','Спокійно: «Давай я розповім тобі, як деякі дорослі використовують такі слова — не тому що ти зробила щось погане, а щоб ти могла захистити себе». Потім — разом заблокувати і повідомити кіберполіції','«Не відповідай і все»','«Ти що, спілкуєшся з незнайомцями? Як ти могла?»'],
+   ans:1,fb:'Реакція з криком закриває розмову назавжди. Дитина може почати приховувати такі контакти. Спокійне пояснення без звинувачень — навчає, а не карає.'},
+  {q:'Ви дізнались, що ваша дитина (16 р.) надіслала особисте фото партнеру/-ці, і тепер їх шантажують. Дитина ридає і каже: «Не кажи нікому, я сама розберусь». Що ви робите?',
+   opts:['«Я ж казав/ла тобі! Чому ти не слухала?»','Обійміть. Скажіть: «Ти нічого не зробила неправильно. Ми не платимо — це посилить шантаж. Ми разом звернемось в кіберполіцію — і ти захищена». Дійте разом','«Дай мені контакт шантажиста — я сам/а розберусь»','«Нічого не роби — може, самі заспокояться»'],
+   ans:1,fb:'Сексторшн — кримінальний злочин. Оплата не вирішує — підтверджує, що метод працює. Кіберполіція — cyberpolice.gov.ua. Перша реакція визначає все.'},
+  {q:'Підліток (14 р.) почав цікавитись темами смерті і самоушкодження — ви знайшли підписки на відповідні акаунти. Що ви робите?',
+   opts:['Кажу: «Це хвора тема, видали все негайно»','Нічого не кажу — не хочу налякати','Вибираю момент, обіймаю і кажу: «Я помітив/ла деякі підписки. Мені важливо знати, як ти себе почуваєш — не про підписки, а взагалі. Ти в порядку?»','Перевіряю телефон таємно щодня'],
+   ans:2,fb:'Заборона контенту без розмови — не вирішує. Дитина просто краще ховатиме. Пряме, спокійне запитання про стан — відкриває. Якщо є ознаки самоушкодження — до психолога одразу.'},
+  {q:'Ви хочете встановити правила щодо телефону вдома. Яке рішення найефективніше?',
+   opts:['Роздрукувати список правил і оголосити за вечерею','Сісти разом і запитати: «Що для тебе важливо в тому, як ти використовуєш телефон? І що важливо для мене — давай знайдемо компроміс»','Поступово запровадити правила без оголошення','Нічого не встановлювати — це все одно не спрацює'],
+   ans:1,fb:'Спільно розроблені правила виконуються у 3 рази частіше. Підліток, залучений до процесу, відчуває повагу — і відповідає відповідальністю.'},
+  {q:'Дитина (13 р.) хоче зареєструватись у TikTok. Ви не розумієте цю платформу. Що краще?',
+   opts:['«Ні. TikTok — небезпечний, і крапка»','«Добре, але я слідкуватиму за тобою там»','«Давай ти покажеш мені, як це працює — і ми разом налаштуємо профіль з розумними налаштуваннями приватності»','Мовчки встановити батьківський контроль'],
+   ans:2,fb:'Спільне вивчення платформи — найкращий підхід. Ви дізнаєтесь про ризики з перших вуст. Дитина відчуває, що вас цікавить її світ, а не лише безпека.'},
+];
+let scI=0,scSc=0,scAns=false;
+function loadSc(){
+  const s=scenarios[scI];
+  document.getElementById('scHdrNum').textContent=`Дилема ${scI+1} з ${scenarios.length}`;
+  document.getElementById('scFill').style.width=`${((scI+1)/scenarios.length)*100}%`;
+  document.getElementById('scQ').textContent=s.q;
+  const o=document.getElementById('scOpts');o.innerHTML='';
+  s.opts.forEach((op,i)=>{const b=document.createElement('button');b.className='sc-opt';b.textContent=op;b.onclick=()=>ansSc(i);o.appendChild(b);});
+  document.getElementById('scFb').className='sc-fb';document.getElementById('scNext').className='sc-next';scAns=false;
+}
+function ansSc(i){
+  if(scAns)return;scAns=true;
+  const s=scenarios[scI];
+  document.querySelectorAll('.sc-opt').forEach(b=>b.disabled=true);
+  const fb=document.getElementById('scFb');
+  if(i===s.ans){document.querySelectorAll('.sc-opt')[i].classList.add('ok');fb.className='sc-fb ok show';scSc++;document.getElementById('scPts').textContent=scSc+' / '+scenarios.length;}
+  else{document.querySelectorAll('.sc-opt')[i].classList.add('bad');document.querySelectorAll('.sc-opt')[s.ans].classList.add('ok');fb.className='sc-fb bad show';}
+  fb.textContent=s.fb;document.getElementById('scNext').className='sc-next show';
+}
+function nextSc(){
+  scI++;
+  if(scI<scenarios.length){loadSc();return;}
+  document.getElementById('scQ').textContent='';document.getElementById('scOpts').innerHTML='';
+  document.getElementById('scFb').className='sc-fb';document.getElementById('scNext').className='sc-next';
+  document.getElementById('scHdrNum').textContent='Дилеми завершено';
+  const sc=document.getElementById('scScore');sc.style.display='block';
+  const msgs=['Є над чим попрацювати — і ви вже на правильному шляху 💙','Непогано! Ваш інстинкт правильний 🌱','Добре! Ви знаєте, як будувати довіру 🌿','Чудово! Ваша дитина в надійних руках 🛡️'];
+  const t=Math.min(Math.floor(scSc/(scenarios.length/msgs.length)),msgs.length-1);
+  sc.textContent=`${scSc} з ${scenarios.length} — ${msgs[t]}`;
+}
+loadSc();
+
+// PLAN
+function genPlan(){
+  const v=id=>document.getElementById(id).value.trim()||'—';
+  document.getElementById('planContent').innerHTML=`
+    <div class="pr-row"><span class="pr-l">Дитина</span><span>${v('pf1')}</span></div>
+    <div class="pr-row"><span class="pr-l">Екранний час</span><span>${v('pf2')}</span></div>
+    <div class="pr-row"><span class="pr-l">Платформи</span><span>${v('pf3')}</span></div>
+    <div class="pr-row"><span class="pr-l">Що залишається приватним</span><span>${v('pf4')}</span></div>
+    <div class="pr-row"><span class="pr-l">Людина довіри</span><span>${v('pf5')}</span></div>
+    <div class="pr-row"><span class="pr-l">Гаряча лінія</span><span>${v('pf6')}</span></div>
+    <div class="pr-row"><span class="pr-l">Обіцянка батьків</span><span>${v('pf7')}</span></div>`;
+  document.getElementById('planRes').classList.add('show');
+}
+</script>
+<style id="srcblk">.sb{max-width:960px;margin:3rem auto 4rem;padding:1.4rem 1.5rem;border:1px solid rgba(128,128,128,.35);border-radius:12px;background:rgba(128,128,128,.09);line-height:1.6;color:inherit;font-size:.9rem;position:relative;z-index:5}.sb h2{font-size:1.15rem;margin:0 0 .6rem}.sb h3{font-size:.95rem;margin:1.1rem 0 .4rem}.sb ol{padding-left:1.3rem}.sb li{margin:.35rem 0;font-size:.84rem;opacity:.92}.sb .nt{font-size:.78rem;opacity:.78;margin:.6rem 0}.sb table{width:100%;border-collapse:collapse;font-size:.82rem}.sb td,.sb th{text-align:left;padding:.4rem .5rem;border-bottom:1px solid rgba(128,128,128,.3);vertical-align:top}.sb .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.6rem}.sb .cards div{border:1px solid rgba(128,128,128,.3);border-radius:10px;padding:.7rem .9rem;font-size:.82rem}.sb .cards i{font-style:normal;font-size:1.2rem;display:block}.sb details summary{cursor:pointer;font-weight:600}</style><!--srcblk--><div class="sb"><h2>📖 Джерела й що почитати</h2><h3>Використані джерела</h3><ol><li>Livingstone, S., &amp; Third, A. (2017). Children and young people’s rights in the digital age: An emerging agenda. <i>New Media &amp; Society, 19</i>(5), 657–670.</li><li>Livingstone, S., Haddon, L., Görzig, A., &amp; Ólafsson, K. (2011). <i>Risks and safety on the internet: The perspective of European children</i>. EU Kids Online, LSE.</li><li>Orben, A., &amp; Przybylski, A. K. (2019). The association between adolescent well-being and digital technology use. <i>Nature Human Behaviour, 3</i>, 173–182.</li></ol><h3>Що почитати батькам</h3><table><tr><th>Назва</th><th>Автор / видання</th><th>Чому корисно</th></tr><tr><td>How to Talk So Kids Will Listen &amp; Listen So Kids Will Talk</td><td>Faber A., Mazlish E.</td><td>Практичні фрази</td></tr><tr><td>Raising an Emotionally Intelligent Child</td><td>Gottman J., DeClaire J., 1997</td><td>Емоційне коучинг-спілкування</td></tr><tr><td>The Whole-Brain Child</td><td>Siegel D. J., Bryson T. P., 2011</td><td>Емоції дитини</td></tr></table><p class="nt">Бібліографічні дані наведено за знаннями автора без звірки з першоджерелами в мережі: перед цитуванням перевірте видання, рік, DOI та доступність. Українські переклади книг можуть існувати або ні. Зведений реєстр: project_sources.html.</p><p class="nt">Допомога: 116 111 (безкоштовно, анонімно, цілодобово) · 0 800 500 335 · 102 / 103.</p></div><!--/srcblk--><div class="mo-foot"><span><a href="../index.html">Усі теми</a></span><span>Це остання тема.</span></div><script src="../assets/config.js"></script><script src="../assets/site.js"></script></body>
+</html>

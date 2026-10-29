@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Для батьків · Стрес, тривога і кризові події</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F8F4EE;--surf:#FFFFFF;--ink:#1C1F2A;--text:#2D3348;--muted:#6B7280;--bd:#E4DDD0;--bds:#C8BFB0;
+  --gr:#1A6E52;--gr-l:#E6F2ED;--gr-ll:#F2F9F6;
+  --te:#B84828;--te-l:#FBF0EB;--te-ll:#FDF6F3;
+  --go:#A87800;--go-l:#FBF4E4;
+  --in:#344888;--in-l:#EEF1F9;
+  --lav:#6B5090;--la-l:#F0ECF8;
+  --teal:#1A7070;--tl-l:#E6F3F3;
+  --vio:#6848B8;--vi-l:#EEEAF8;
+  --ro:#A03848;--ro-l:#FDECEA;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-size:16px;line-height:1.7;}
+.prog{position:fixed;top:0;left:0;height:3px;z-index:500;background:linear-gradient(90deg,var(--gr),var(--te),var(--vio));transition:width .3s;width:0%;}
+.topnav{position:sticky;top:0;z-index:300;background:var(--ink);padding:.75rem 2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;}
+.tnbrand{font-family:'Playfair Display',serif;font-size:.9rem;font-weight:400;font-style:italic;color:rgba(255,255,255,.7);}
+.tnnav{display:flex;gap:.2rem;flex-wrap:wrap;}
+.tnb{background:none;border:1px solid rgba(255,255,255,.15);border-radius:4px;padding:.25rem .7rem;font-family:'Inter',sans-serif;font-size:.68rem;font-weight:600;color:rgba(255,255,255,.5);cursor:pointer;transition:all .2s;white-space:nowrap;}
+.tnb:hover{background:rgba(255,255,255,.1);color:white;}
+.tnb.on{background:var(--gr);border-color:var(--gr);color:white;}
+.hero{background:linear-gradient(160deg,#0A0E18 0%,#0A1808 45%,#140A18 100%);padding:5rem 2rem 4rem;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:-80px;right:-80px;width:350px;height:350px;border-radius:50%;background:radial-gradient(circle,rgba(26,110,82,.22),transparent 70%);}
+.hero::after{content:'';position:absolute;bottom:-60px;left:-60px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(104,72,184,.14),transparent 70%);}
+.hero-in{max-width:920px;margin:0 auto;position:relative;z-index:1;}
+.hero-kicker{font-size:.65rem;font-weight:600;letter-spacing:.22em;color:rgba(140,210,160,.6);margin-bottom:1.4rem;text-transform:uppercase;}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,6vw,4.8rem);font-weight:400;line-height:1.1;color:white;margin-bottom:1.2rem;letter-spacing:-.01em;}
+.hero h1 em{font-style:italic;color:#8ED890;}
+.hero-sub{font-size:1rem;font-weight:300;line-height:1.9;color:rgba(255,255,255,.5);max-width:540px;margin-bottom:2rem;}
+.hero-chips{display:flex;gap:.5rem;flex-wrap:wrap;}
+.hc{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:50px;padding:.3rem 1rem;font-size:.72rem;font-weight:500;color:rgba(255,255,255,.55);}
+.sec{max-width:920px;margin:0 auto;padding:4.5rem 2rem;}
+.divider{max-width:920px;margin:0 auto;height:1px;background:linear-gradient(90deg,var(--gr),var(--bd),transparent);opacity:.5;}
+.eyebrow{font-size:.65rem;font-weight:600;letter-spacing:.18em;color:var(--gr);margin-bottom:.8rem;text-transform:uppercase;display:flex;align-items:center;gap:.5rem;}
+.eyebrow::after{content:'';width:24px;height:1px;background:var(--gr);opacity:.5;}
+.eyebrow.vio{color:var(--vio);}
+.eyebrow.vio::after{background:var(--vio);}
+h2{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,4vw,3rem);font-weight:400;line-height:1.12;color:var(--ink);margin-bottom:1rem;letter-spacing:-.01em;}
+h2 em{font-style:italic;color:var(--gr);}
+h2 em.vio{color:var(--vio);}
+h2 strong{color:var(--te);}
+.lead{font-size:.97rem;font-weight:300;line-height:1.95;color:var(--muted);max-width:680px;margin-bottom:2rem;}
+.pq{border-left:3px solid var(--gr);padding:1.4rem 2rem;margin:2.5rem 0;background:linear-gradient(90deg,var(--gr-l),transparent);}
+.pq.vio{border-color:var(--vio);background:linear-gradient(90deg,var(--vi-l),transparent);}
+.pq-who{font-size:.62rem;font-weight:600;letter-spacing:.18em;color:var(--gr);margin-bottom:.6rem;text-transform:uppercase;}
+.pq.vio .pq-who{color:var(--vio);}
+.pq p{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:400;font-style:italic;line-height:1.85;color:var(--ink);}
+.sig-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1px;background:var(--bd);border:1px solid var(--bd);margin:1.8rem 0;}
+.sg{background:var(--surf);padding:1.4rem;transition:background .2s;}
+.sg:hover{background:var(--gr-l);}
+.sg.vio:hover{background:var(--vi-l);}
+.sg-ico{font-size:1.6rem;margin-bottom:.5rem;display:block;}
+.sg-t{font-size:.9rem;font-weight:600;color:var(--ink);margin-bottom:.3rem;}
+.sg-b{font-size:.8rem;font-weight:300;color:var(--muted);line-height:1.6;}
+.dd-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--bd);border:1px solid var(--bd);margin:1.8rem 0;}
+@media(max-width:580px){.dd-grid{grid-template-columns:1fr;}}
+.dd-col{background:var(--surf);padding:1.5rem;}
+.dd-head{font-size:.7rem;font-weight:700;letter-spacing:.12em;margin-bottom:1rem;padding:.3rem .8rem;display:inline-block;border-radius:3px;}
+.dd-head.do{background:var(--gr-l);color:var(--gr);}
+.dd-head.dont{background:var(--te-l);color:var(--te);}
+.dd-list{list-style:none;}
+.dd-list li{font-size:.86rem;font-weight:300;color:var(--text);line-height:1.7;padding:.4rem 0;border-bottom:1px solid var(--bd);display:flex;gap:.6rem;align-items:flex-start;}
+.dd-list li:last-child{border:none;}
+.dd-list li::before{font-size:.9rem;flex-shrink:0;margin-top:.05rem;}
+.dd-list.do li::before{content:'✓';color:var(--gr);}
+.dd-list.dont li::before{content:'✗';color:var(--te);}
+.sc-list{margin:1.8rem 0;}
+.sc-item{border-bottom:1px solid var(--bd);}
+.sc-head{display:flex;align-items:flex-start;gap:.9rem;padding:1.1rem 0;cursor:pointer;}
+.sc-head:hover .sc-title{color:var(--gr);}
+.sc-ico{font-size:1.4rem;flex-shrink:0;margin-top:.05rem;}
+.sc-title{font-size:.92rem;font-weight:600;color:var(--ink);flex:1;transition:color .2s;line-height:1.5;}
+.sc-arr{font-size:.68rem;color:var(--muted);transition:transform .25s;margin-top:.2rem;}
+.sc-item.open .sc-arr{transform:rotate(90deg);}
+.sc-body{display:none;padding:0 0 1.5rem 3.3rem;font-size:.88rem;font-weight:300;line-height:1.88;color:var(--muted);}
+.sc-item.open .sc-body{display:block;}
+.sc-say{margin:.8rem 0;padding:.75rem 1.1rem;background:var(--gr-l);border-left:2px solid var(--gr);font-size:.84rem;color:var(--ink);}
+.sc-say.vio{background:var(--vi-l);border-color:var(--vio);}
+.sc-say strong{color:var(--gr);font-size:.65rem;letter-spacing:.1em;font-weight:700;display:block;margin-bottom:.25rem;text-transform:uppercase;}
+.sc-say.vio strong{color:var(--vio);}
+.sc-avoid{margin:.5rem 0;padding:.65rem 1rem;background:var(--te-l);border-left:2px solid var(--te);font-size:.82rem;color:var(--muted);}
+.step-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:.9rem;margin:1.8rem 0;}
+.step{background:var(--surf);border:1px solid var(--bd);padding:1.4rem;position:relative;}
+.step-n{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:400;color:var(--gr);opacity:.2;position:absolute;top:.8rem;right:1rem;line-height:1;}
+.step-n.vio{color:var(--vio);}
+.step-t{font-size:.92rem;font-weight:600;color:var(--ink);margin-bottom:.4rem;padding-right:2rem;}
+.step-b{font-size:.82rem;font-weight:300;color:var(--muted);line-height:1.65;}
+.age-tabs{display:flex;gap:.35rem;margin-bottom:1.4rem;flex-wrap:wrap;}
+.at-btn{background:var(--surf);border:1px solid var(--bd);border-radius:6px;padding:.38rem .95rem;font-family:'Inter',sans-serif;font-size:.78rem;font-weight:600;color:var(--muted);cursor:pointer;transition:all .2s;}
+.at-btn:hover{border-color:var(--bds);color:var(--ink);}
+.at-btn.on{background:var(--gr);border-color:var(--gr);color:white;}
+.at-btn.on.vio{background:var(--vio);border-color:var(--vio);}
+.at-panel{display:none;}.at-panel.on{display:block;}
+.al{border-radius:10px;padding:1.1rem 1.4rem;margin:1.2rem 0;display:flex;gap:.8rem;align-items:flex-start;}
+.al .ai{font-size:1.2rem;flex-shrink:0;margin-top:.05rem;}
+.al-body p{font-size:.85rem;line-height:1.7;}
+.al-body strong{font-weight:700;font-size:.72rem;letter-spacing:.04em;display:block;margin-bottom:.2rem;}
+.a-gr{background:var(--gr-l);border-left:4px solid var(--gr);}
+.a-te{background:var(--te-l);border-left:4px solid var(--te);}
+.a-go{background:var(--go-l);border-left:4px solid var(--go);}
+.a-in{background:var(--in-l);border-left:4px solid var(--in);}
+.a-la{background:var(--la-l);border-left:4px solid var(--lav);}
+.a-tl{background:var(--tl-l);border-left:4px solid var(--teal);}
+.a-vio{background:var(--vi-l);border-left:4px solid var(--vio);}
+.a-ro{background:var(--ro-l);border-left:4px solid var(--ro);}
+.check-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:.8rem;margin:1.5rem 0;}
+.check-item{background:var(--surf);border:1px solid var(--bd);padding:1rem 1.2rem;display:flex;align-items:flex-start;gap:.8rem;cursor:pointer;transition:all .2s;}
+.check-item:hover{border-color:var(--bds);}
+.check-item.done{border-color:var(--gr);background:var(--gr-l);}
+.check-item.done.vio{border-color:var(--vio);background:var(--vi-l);}
+.ci-box{width:20px;height:20px;border:2px solid var(--bd);border-radius:4px;flex-shrink:0;margin-top:.1rem;display:flex;align-items:center;justify-content:center;transition:all .2s;font-size:.8rem;}
+.check-item.done .ci-box{background:var(--gr);border-color:var(--gr);color:white;}
+.check-item.done.vio .ci-box{background:var(--vio);border-color:var(--vio);}
+.ci-text{font-size:.84rem;font-weight:300;color:var(--text);line-height:1.6;}
+.tbl{width:100%;border-collapse:collapse;margin:1.2rem 0;font-size:.84rem;}
+.tbl th{background:var(--ink);color:white;text-align:left;padding:.65rem 1rem;font-weight:600;font-size:.72rem;letter-spacing:.04em;}
+.tbl td{padding:.65rem 1rem;border-bottom:1px solid var(--bd);vertical-align:top;line-height:1.65;}
+.tbl tr:nth-child(even) td{background:var(--gr-ll);}
+.phrase-box{background:var(--surf);border:1px solid var(--bd);border-radius:10px;overflow:hidden;margin:1.5rem 0;}
+.phrase-hdr{background:var(--ink);padding:.75rem 1.3rem;font-size:.68rem;font-weight:700;letter-spacing:.1em;color:rgba(255,255,255,.5);text-transform:uppercase;}
+.phrase-row{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--bd);}
+@media(max-width:560px){.phrase-row{grid-template-columns:1fr;}}
+.pr-cell{background:var(--surf);padding:1rem 1.2rem;}
+.pr-cell.bad{background:var(--te-ll);}
+.pr-cell.good{background:var(--gr-ll);}
+.pr-cell.good-vio{background:var(--vi-l);}
+.pr-label{font-size:.62rem;font-weight:700;letter-spacing:.1em;margin-bottom:.4rem;text-transform:uppercase;}
+.pr-label.bad{color:var(--te);}
+.pr-label.good{color:var(--gr);}
+.pr-label.good-vio{color:var(--vio);}
+.pr-text{font-size:.85rem;font-weight:300;color:var(--text);line-height:1.65;font-style:italic;}
+.contacts{background:linear-gradient(135deg,#0A1808,#101A10);border-radius:14px;padding:2.5rem;margin:2rem 0;}
+.cont-title{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:400;color:white;margin-bottom:.4rem;}
+.cont-sub{font-size:.84rem;font-weight:300;color:rgba(255,255,255,.45);margin-bottom:2rem;}
+.cont-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.2rem;}
+.cont-item{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:1.2rem;}
+.cont-label{font-size:.62rem;font-weight:600;letter-spacing:.14em;color:rgba(140,210,160,.6);margin-bottom:.35rem;text-transform:uppercase;}
+.cont-num{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:400;color:white;line-height:1.2;margin-bottom:.2rem;}
+.cont-desc{font-size:.76rem;font-weight:300;color:rgba(255,255,255,.45);line-height:1.55;}
+/* CRISIS ZONE CARDS */
+.zone-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.8rem;margin:1.8rem 0;}
+.zc{padding:1.3rem;border-radius:10px;border:1px solid var(--bd);}
+.zc-ico{font-size:1.5rem;margin-bottom:.5rem;display:block;}
+.zc-t{font-size:.9rem;font-weight:700;margin-bottom:.4rem;}
+.zc-b{font-size:.8rem;font-weight:300;color:var(--muted);line-height:1.6;}
+.zc-safe{background:var(--gr-l);border-color:rgba(26,110,82,.25);}
+.zc-safe .zc-t{color:var(--gr);}
+.zc-wave{background:var(--go-l);border-color:rgba(168,120,0,.25);}
+.zc-wave .zc-t{color:var(--go);}
+.zc-storm{background:var(--ro-l);border-color:rgba(160,56,72,.25);}
+.zc-storm .zc-t{color:var(--ro);}
+.final{background:var(--ink);padding:4rem 2rem;text-align:center;}
+.final-in{max-width:600px;margin:0 auto;}
+.final h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:400;color:white;margin-bottom:1rem;}
+.final h2 em{font-style:italic;color:#8ED890;}
+.final p{font-size:.95rem;font-weight:300;color:rgba(255,255,255,.5);line-height:1.9;margin-bottom:1.5rem;}
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .6s,transform .6s;}
+.reveal.vis{opacity:1;transform:none;}
+</style>
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body data-mo-site="batky" data-mo-id="x1" data-mo-kind="parent" data-mo-sens="0"><nav class="mo-nav"><a href="../index.html">← Усі теми</a><span class="mo-t">Додатково · Гайд для батьків: стрес і тривога</span><span class="mo-r"></span></nav>
+<div class="prog" id="prog"></div>
+<nav class="topnav">
+  <div class="tnbrand">Для батьків · Стрес, тривога і кризові події</div>
+  <div class="tnnav">
+    <button class="tnb on" onclick="goTo('s-signals')">🔍 Сигнали</button>
+    <button class="tnb" onclick="goTo('s-stress')">😤 Стрес</button>
+    <button class="tnb" onclick="goTo('s-anxiety')">💭 Тривога</button>
+    <button class="tnb" onclick="goTo('s-crisis')">🆘 Криза</button>
+    <button class="tnb" onclick="goTo('s-age')">👶 За віком</button>
+    <button class="tnb" onclick="goTo('s-phrases')">🗣️ Фрази</button>
+    <button class="tnb" onclick="goTo('s-check')">✅ Чекліст</button>
+    <button class="tnb" onclick="goTo('s-help')">🚨 Допомога</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-in">
+    <div class="hero-kicker">Практичний гайд для батьків і опікунів · Три серії</div>
+    <h1>Ваша дитина<br><em>переживає.</em><br>Як допомогти?</h1>
+    <p class="hero-sub">Зведений практичний посібник до трьох шкільних серій: «Стрес і тіло», «Сила моєї думки» і «Як зберегти спокій під час кризових подій». Без теорії — тільки конкретні дії, фрази і орієнтири.</p>
+    <div class="hero-chips">
+      <div class="hc">5–11 клас</div>
+      <div class="hc">Стрес і тіло</div>
+      <div class="hc">Тривога і думки</div>
+      <div class="hc">🆘 Кризові події</div>
+      <div class="hc">Фрази і сценарії</div>
+      <div class="hc">Коли звертатись</div>
+    </div>
+  </div>
+</header>
+
+<!-- INTRO -->
+<section class="sec reveal">
+  <div class="eyebrow">Для початку</div>
+  <h2>Те, що ваша дитина<br>переживає — <em>реально</em></h2>
+  <p class="lead">Стрес, тривога і реакція на кризові події — не «вигадки», не «пошук уваги» і не слабкість. Це фізіологічні реакції мозку і тіла. Ваша реакція на них — один із найпотужніших чинників того, чи навчиться дитина з ними справлятись.</p>
+  <div class="pq">
+    <div class="pq-who">Ключова ідея</div>
+    <p>Діти не «страждають від тривоги» — вони вчаться з нею жити. Ваше завдання не прибрати страх або тривогу, а допомогти дитині навчитись їх проходити.</p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SIGNALS -->
+<section class="sec reveal" id="s-signals">
+  <div class="eyebrow">Розпізнати</div>
+  <h2>Як виглядає <em>стрес і тривога</em><br>у дітей і підлітків</h2>
+  <p class="lead">Діти рідко кажуть «мені тривожно» або «я реагую на кризу». Замість цього — зміни в поведінці, тілі і настрої. Ось що шукати:</p>
+  <div class="sig-grid">
+    <div class="sg"><span class="sg-ico">😴</span><div class="sg-t">Зміни сну</div><div class="sg-b">Важко заснути, часто прокидається, кошмари — або навпаки, спить надмірно</div></div>
+    <div class="sg"><span class="sg-ico">🍽️</span><div class="sg-t">Зміни апетиту</div><div class="sg-b">Їсть значно менше або більше, нудота перед важливими подіями або після тривожних новин</div></div>
+    <div class="sg"><span class="sg-ico">😤</span><div class="sg-t">Дратівливість або апатія</div><div class="sg-b">Вибухи через дрібниці або навпаки — «все одно», «нічого не хочу». Обидва — сигнали</div></div>
+    <div class="sg"><span class="sg-ico">🙈</span><div class="sg-t">Уникання</div><div class="sg-b">Відмовляється від школи, гуртків, зустрічей, новин — або навпаки, нав'язливо їх шукає</div></div>
+    <div class="sg"><span class="sg-ico">🤕</span><div class="sg-t">Фізичні скарги</div><div class="sg-b">Головний біль, болі в животі, серцебиття без медичної причини — соматизація стресу</div></div>
+    <div class="sg"><span class="sg-ico">📱</span><div class="sg-t">Різка зміна екранного часу</div><div class="sg-b">Різке збільшення (втеча від тривоги) або зменшення (апатія) — обидва напрямки важливі</div></div>
+    <div class="sg"><span class="sg-ico">🗣️</span><div class="sg-t">Менше розмов</div><div class="sg-b">Замикається, стислі відповіді «нормально», «не знаю», або навпаки — хаотичні розмови про страхи</div></div>
+    <div class="sg vio"><span class="sg-ico">🧊</span><div class="sg-t">«Заморожується» або онімів/-ла</div><div class="sg-b">Після переляку або страшної новини — сидить нерухомо, повільно відповідає. Це «завмирання» — нормальна реакція нервової системи</div></div>
+  </div>
+  <div class="al a-go reveal">
+    <span class="ai">💡</span>
+    <div class="al-body"><p><strong>Важливо розрізняти</strong> Короткочасний стрес перед контрольною або після сирени — норма. Якщо симптоми тривають більше 2–3 тижнів і заважають повсякденному життю — це сигнал для розмови з фахівцем.</p></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- STRESS -->
+<section class="sec reveal" id="s-stress">
+  <div class="eyebrow">Тема 1 · Стрес і тіло</div>
+  <h2>Ваша дитина<br>вивчала <em>стрес і тіло</em></h2>
+  <p class="lead">На цих уроках діти дізнались: що стрес — це фізіологічна реакція (серцебиття, напруження, важке дихання), як ці реакції виникають, і що з ними робити.</p>
+  <div class="pq">
+    <div class="pq-who">Що дитина вивчила на уроці</div>
+    <p>«Бій, втеча або завмри» — три стресові реакції тіла. Дихальні техніки і фізична активність як засоби саморегуляції. «Стрес — сигнал, а не вирок».</p>
+  </div>
+  <h3 style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:400;color:var(--ink);margin-bottom:.9rem">Що робити вдома:</h3>
+  <div class="step-grid">
+    <div class="step"><span class="step-n">1</span><div class="step-t">Дихайте разом</div><div class="step-b">Техніка 4-4-6: вдих 4 сек → затримка 4 → видих 6. «Давай разом зробимо кілька дихань». Не «заспокойся» — а «давай спробуємо».</div></div>
+    <div class="step"><span class="step-n">2</span><div class="step-t">Рух після важкого дня</div><div class="step-b">10-хвилинна прогулянка, танці — знижує кортизол. Не «сиди тихо» — а «ходімо разом».</div></div>
+    <div class="step"><span class="step-n">3</span><div class="step-t">Назвіть що бачите</div><div class="step-b">«Я бачу що ти напружений/-а. Що сталось?» — дає дитині мову для власного стану.</div></div>
+    <div class="step"><span class="step-n">4</span><div class="step-t">Нормалізуйте стрес</div><div class="step-b">«Перед важливим — хвилюватись нормально. Я теж хвилююсь». Ваша відкритість знімає сором.</div></div>
+    <div class="step"><span class="step-n">5</span><div class="step-t">Вечірній ритуал</div><div class="step-b">15 хвилин спільного тихого часу — чай, розмова або просто поруч. Регулярний «безпечний» час знижує фоновий стрес.</div></div>
+    <div class="step"><span class="step-n">6</span><div class="step-t">Оберігайте сон</div><div class="step-b">Телефон — поза спальнею за годину до сну. Недосип посилює стресову реакцію вдвічі.</div></div>
+  </div>
+  <div class="al a-te reveal">
+    <span class="ai">⚠️</span>
+    <div class="al-body"><p>«Та заспокойся вже» — неможлива команда коли тіло в режимі стресу. «У тебе немає причин хвилюватись» — заперечення реального стану. «Я в твоєму віці і не таке переживав/-ла» — порівняння знецінює.</p></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ANXIETY -->
+<section class="sec reveal" id="s-anxiety">
+  <div class="eyebrow">Тема 2 · Сила моєї думки</div>
+  <h2>Ваша дитина вивчала<br><em>думки і тривогу</em></h2>
+  <p class="lead">На цих уроках — про пастки мислення і як з ними працювати. Ваша роль вдома: не «виправляти» думки дитини, а допомагати їй помічати їх самостійно.</p>
+  <div class="pq">
+    <div class="pq-who">Що дитина вивчила на уроці</div>
+    <p>Когнітивні спотворення — думки-пастки що перекручують реальність. Модель ABC: не подія, а думка про неї викликає реакцію. Техніки: Thought Record, Сократів діалог, ACT-дефузія.</p>
+  </div>
+  <div class="sc-list">
+    <div class="sc-item">
+      <div class="sc-head" onclick="this.parentElement.classList.toggle('open')">
+        <span class="sc-ico">😰</span><div class="sc-title">«Я провалю цю контрольну — це катастрофа»</div><span class="sc-arr">▶</span>
+      </div>
+      <div class="sc-body">Це «катастрофізація» — пастка думок яку дитина вивчила на уроці. Ваша задача — не переконати що «все буде добре», а допомогти перевірити думку.
+        <div class="sc-say"><strong>Спробуйте сказати</strong>«Ти кажеш «катастрофа» — що насправді найгірше може статись? А що найімовірніше?»</div>
+        <div class="sc-avoid">Уникайте: «Та нічого страшного» або «Ти просто маєш краще підготуватись».</div>
+      </div>
+    </div>
+    <div class="sc-item">
+      <div class="sc-head" onclick="this.parentElement.classList.toggle('open')">
+        <span class="sc-ico">😔</span><div class="sc-title">«Всі в класі мене не люблять»</div><span class="sc-arr">▶</span>
+      </div>
+      <div class="sc-body">«Читання думок» і «надузагальнення» — дві пастки одночасно.
+        <div class="sc-say"><strong>Спробуйте сказати</strong>«Ти кажеш «всі» — це дійсно кожна людина? Є хтось із ким спілкуєшся нормально?»</div>
+        <div class="sc-avoid">Уникайте: «Та ти перебільшуєш» або «Просто підійди і познайомся».</div>
+      </div>
+    </div>
+    <div class="sc-item">
+      <div class="sc-head" onclick="this.parentElement.classList.toggle('open')">
+        <span class="sc-ico">🏠</span><div class="sc-title">«Не хочу йти в школу» (регулярно)</div><span class="sc-arr">▶</span>
+      </div>
+      <div class="sc-body">Регулярне уникання школи — серйозний сигнал. Може вказувати на соціальну тривогу, булінг або тривожний розлад.
+        <div class="sc-say"><strong>Спробуйте сказати</strong>«Розкажи мені — що саме найважче: ранок, конкретний урок, якась людина? Я хочу зрозуміти».</div>
+        <div class="sc-avoid">Якщо це продовжується більше 2 тижнів — зверніться до шкільного психолога.</div>
+      </div>
+    </div>
+    <div class="sc-item">
+      <div class="sc-head" onclick="this.parentElement.classList.toggle('open')">
+        <span class="sc-ico">🌙</span><div class="sc-title">«Не можу заснути — думки крутяться»</div><span class="sc-arr">▶</span>
+      </div>
+      <div class="sc-body">Циклічні думки перед сном — класичний симптом тривоги.
+        <div class="sc-say"><strong>Спробуйте запропонувати</strong>«Спробуй записати всі думки на папір перед сном. Потім — дихання 4-4-6 лежачи».</div>
+        <div class="sc-avoid">Уникайте телефону як «заспокійливого» — він підтримує тривогу.</div>
+      </div>
+    </div>
+    <div class="sc-item">
+      <div class="sc-head" onclick="this.parentElement.classList.toggle('open')">
+        <span class="sc-ico">💬</span><div class="sc-title">«Я ні з ким не можу поговорити про це»</div><span class="sc-arr">▶</span>
+      </div>
+      <div class="sc-body">Ізоляція з тривогою — небезпечний цикл. Соціальний контакт фізіологічно знижує кортизол.
+        <div class="sc-say"><strong>Спробуйте сказати</strong>«Я тут — і хочу слухати. Не обіцяю вирішити, але обіцяю не перебивати. Розкажи мені».</div>
+        <div class="sc-avoid">Уникайте: одразу давати поради. Дитині частіше потрібне вухо.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CRISIS -->
+<section class="sec reveal" id="s-crisis">
+  <div class="eyebrow vio">Тема 3 · Як зберегти спокій під час кризових подій</div>
+  <h2>Ваша дитина вивчала<br><em class="vio">кризові реакції</em> і як їх регулювати</h2>
+  <p class="lead">На цих уроках — про те що відбувається в нервовій системі під час сирени, вибуху, страшної новини. І про конкретні техніки які справді допомагають. Ваша роль вдома — не «не лякати» і не «захищати від реальності», а бути надійним дорослим поруч.</p>
+
+  <div class="pq vio">
+    <div class="pq-who">Що дитина вивчила на уроці</div>
+    <p>Три стани нервової системи: безпека, мобілізація («бій/втеча») і завмирання. Дихання 4-4-6 і заземлення 5-4-3-2-1 як інструменти регуляції. Особистий «план безпеки» на кризовий момент.</p>
+  </div>
+
+  <h3 style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:400;color:var(--ink);margin-bottom:.9rem">Три стани нервової системи — що ви бачите вдома:</h3>
+  <div class="zone-cards">
+    <div class="zc zc-safe">
+      <span class="zc-ico">🏠</span>
+      <div class="zc-t">Стан безпеки</div>
+      <div class="zc-b">Спокійна, може думати і говорити, тіло розслаблене. Це нормальний стан. Підтримуйте його: рутина, передбачуваність, тихий час разом.</div>
+    </div>
+    <div class="zc zc-wave">
+      <span class="zc-ico">🌊</span>
+      <div class="zc-t">Мобілізація</div>
+      <div class="zc-b">Серце б'ється, тремтіння, важко сидіти, злість або плач. Тіло в режимі «бій або втеча». Допомагає: дихання разом, рух, спокійний ваш голос.</div>
+    </div>
+    <div class="zc zc-storm">
+      <span class="zc-ico">🌀</span>
+      <div class="zc-t">Завмирання</div>
+      <div class="zc-b">Онімів/-ла, не рухається, порожній погляд, говорить повільно. Це захисна реакція — НЕ «боягузтво». Допомагає: тихий ваш голос, фізичний контакт якщо дозволяє, відчуття підлоги під ногами.</div>
+    </div>
+  </div>
+
+  <h3 style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:400;color:var(--ink);margin-bottom:.9rem;margin-top:2rem">Що робити вдома під час і після кризової події:</h3>
+  <div class="step-grid">
+    <div class="step"><span class="step-n vio">1</span><div class="step-t">Ваш спокій — перший крок</div><div class="step-b">Дитина «зчитує» ваш стан раніше ніж ваші слова. Якщо ви самі в паніці — спочатку одне дихання для себе: вдих 4 → видих 6. Потім до дитини.</div></div>
+    <div class="step"><span class="step-n vio">2</span><div class="step-t">Дихайте разом — буквально</div><div class="step-b">«Давай разом подихаємо. Вдих — раз, два, три, чотири. Затримай. Видих — раз, два, три, чотири, п'ять, шість». Ваш голос ритмічно — це якір.</div></div>
+    <div class="step"><span class="step-n vio">3</span><div class="step-t">«Де ти зараз?» — заземлення</div><div class="step-b">«Ти тут, зі мною. Ось підлога під ногами. Ось стіна. Ось моя рука». Фізична реальність навколо — найшвидший спосіб вийти з паніки.</div></div>
+    <div class="step"><span class="step-n vio">4</span><div class="step-t">Інформація — дозовано</div><div class="step-b">Одна перевірка новин на годину — з надійного джерела. Безперервний потік новин підтримує стресову реакцію навіть при відсутності нової загрози.</div></div>
+    <div class="step"><span class="step-n vio">5</span><div class="step-t">Після події — рух</div><div class="step-b">Після переляку тіло «готувалось до дії» — дайте йому цю дію. Прогулянка, потрусити руками, 10 стрибків. Адреналін метаболізується через рух.</div></div>
+    <div class="step"><span class="step-n vio">6</span><div class="step-t">Повертайте рутину</div><div class="step-b">Після кризи — стабільний розпорядок дня відновлює відчуття контролю і безпеки. Навіть маленькі ритуали (вечеря разом, читання) мають значення.</div></div>
+  </div>
+
+  <div class="sc-list" style="margin-top:2rem">
+    <div class="sc-item">
+      <div class="sc-head" onclick="this.parentElement.classList.toggle('open')">
+        <span class="sc-ico">🚨</span><div class="sc-title">Пролунала сирена — дитина злякалась</div><span class="sc-arr">▶</span>
+      </div>
+      <div class="sc-body">Страх при сирені — нормальна реакція нервової системи. Ваше завдання: безпека і регуляція, а не «не лякайся».
+        <div class="sc-say vio"><strong>Спробуйте сказати</strong>«Ми знаємо що робити. Ходимо [в укриття/до безпечного місця]. Я поруч. Давай по дорозі подихаємо разом».</div>
+        <div class="sc-avoid">Уникайте: «Та нічого страшного» — дитина вже злякалась. Це реально для неї.</div>
+      </div>
+    </div>
+    <div class="sc-item">
+      <div class="sc-head" onclick="this.parentElement.classList.toggle('open')">
+        <span class="sc-ico">🧊</span><div class="sc-title">Дитина «заморозилась» — не рухається і не говорить</div><span class="sc-arr">▶</span>
+      </div>
+      <div class="sc-body">«Завмирання» — захисна реакція нервової системи. НЕ «боягузтво» і НЕ «капризи». Тіло тимчасово «вимкнулось» від перевантаження.
+        <div class="sc-say vio"><strong>Спробуйте</strong>Тихий голос: «[Ім'я], я тут. Ти в безпеці». Торкніться руки якщо вона не проти. «Відчуй підлогу під ногами». Не поспішайте — дайте час.</div>
+        <div class="sc-avoid">Уникайте: кричати, трясти, лити воду. Різке збудження може погіршити стан.</div>
+      </div>
+    </div>
+    <div class="sc-item">
+      <div class="sc-head" onclick="this.parentElement.classList.toggle('open')">
+        <span class="sc-ico">😡</span><div class="sc-title">Після кризи — дитина стала дратівливою або злою</div><span class="sc-arr">▶</span>
+      </div>
+      <div class="sc-body">Злість і роздратування після кризи — нормальна симпатична реакція. Адреналін і кортизол шукають виходу. Це не «погана поведінка» — це фізіологія.
+        <div class="sc-say vio"><strong>Спробуйте сказати</strong>«Після страшного — злитись нормально. Тіло ще в режимі готовності. Давай порухаємось — це допоможе».</div>
+        <div class="sc-avoid">Уникайте покарань за «погану поведінку» в перші години після стресової події.</div>
+      </div>
+    </div>
+    <div class="sc-item">
+      <div class="sc-head" onclick="this.parentElement.classList.toggle('open')">
+        <span class="sc-ico">😶</span><div class="sc-title">Після кризи дитина «відключилась» — нічого не відчуває</div><span class="sc-arr">▶</span>
+      </div>
+      <div class="sc-body">«Емоційне заціпеніння» після важкої події — захист. Якщо триває кілька днів — нормально. Якщо тижнями — сигнал.
+        <div class="sc-say vio"><strong>Спробуйте сказати</strong>«Іноді після важкого — нічого не відчуваєш. Це нормально. Я поруч і нікуди не йду».</div>
+        <div class="sc-avoid">Якщо заціпеніння триває більше 2 тижнів і поєднується з іншими симптомами — зверніться до психолога.</div>
+      </div>
+    </div>
+    <div class="sc-item">
+      <div class="sc-head" onclick="this.parentElement.classList.toggle('open')">
+        <span class="sc-ico">🔁</span><div class="sc-title">Дитина постійно повертається до страшних спогадів</div><span class="sc-arr">▶</span>
+      </div>
+      <div class="sc-body">Повторне «програвання» події в думках і розмовах — нормальне опрацювання. Але якщо це нав'язливо і супроводжується фізичними реакціями (тремтіння, серцебиття) — можливий ПТСР.
+        <div class="sc-say vio"><strong>Спробуйте сказати</strong>«Ти можеш розказувати мені стільки разів скільки потрібно. Я слухаю».</div>
+        <div class="sc-avoid">Якщо симптоми тривають 4+ тижні — потрібна консультація травматерапевта. 116 111 як перший крок.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="al a-vio reveal" style="margin-top:1.5rem">
+    <span class="ai">🏠</span>
+    <div class="al-body"><p><strong>Ваш дім — перше укриття</strong> Не від бомб — від хаосу всередині. Стабільність вашого голосу, передбачуваність розпорядку і фізична присутність поруч — найпотужніший захисний фактор для дитини в умовах тривалої кризи.</p></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- AGE -->
+<section class="sec reveal" id="s-age">
+  <div class="eyebrow">За віком</div>
+  <h2>Підтримка відповідно<br>до <em>віку дитини</em></h2>
+  <p class="lead">Стрес, тривога і кризові реакції виглядають по-різному залежно від класу:</p>
+  <div class="age-tabs">
+    <button class="at-btn on" onclick="swAge('a56')">5–6 клас</button>
+    <button class="at-btn" onclick="swAge('a78')">7–8 клас</button>
+    <button class="at-btn" onclick="swAge('a911')">9–11 клас</button>
+  </div>
+  <div class="at-panel on" id="a56">
+    <div class="al a-gr"><span class="ai">🌱</span><div class="al-body"><p><strong>5–6 клас: мова, безпека і маяк</strong> Дитина вперше вчиться говорити про внутрішній стан. При кризі — потребує фізичної присутності і передбачуваності. Образ «маяка» з уроку: «Ти — маяк. Маяк не зупиняє шторм — але завжди світить».</p></div></div>
+    <div class="step-grid" style="margin-top:1rem">
+      <div class="step"><span class="step-n">↗</span><div class="step-t">Називайте емоції разом</div><div class="step-b">«Ти виглядаєш засмученим/-ою. Це тривога чи злість?» Словник емоцій — захист.</div></div>
+      <div class="step"><span class="step-n">↗</span><div class="step-t">Фізичний контакт</div><div class="step-b">Обійми, рука на плечі — фізичний контакт знижує кортизол. Особливо після кризових подій.</div></div>
+      <div class="step"><span class="step-n">↗</span><div class="step-t">Ритуали безпеки</div><div class="step-b">Стабільний вечірній розпорядок знижує фонову тривогу. Після кризи — особливо важливий.</div></div>
+      <div class="step"><span class="step-n">↗</span><div class="step-t">Прості відповіді про кризу</div><div class="step-b">Чесно і просто: «Це небезпечно, але ми знаємо що робити і ми разом». Не брехати — але і не перевантажувати деталями.</div></div>
+    </div>
+  </div>
+  <div class="at-panel" id="a78">
+    <div class="al a-in"><span class="ai">⚡</span><div class="al-body"><p><strong>7–8 клас: нейронаука і компас</strong> Підлітки вже мають наукову мову зі уроків. При кризі — соціальна підтримка однолітків критично важлива. Можуть приховувати страх через сором — нормалізуйте.</p></div></div>
+    <div class="step-grid" style="margin-top:1rem">
+      <div class="step"><span class="step-n">↗</span><div class="step-t">Паралельні розмови</div><div class="step-b">Під час спільних дій — машина, готування, прогулянка. Не «сядьмо поговоримо» — а «ходімо».</div></div>
+      <div class="step"><span class="step-n">↗</span><div class="step-t">Наукова мова</div><div class="step-b">«Твоя мигдалина реагує на загрозу — це нормально». Для 7–8 нейробіологія знімає сором.</div></div>
+      <div class="step"><span class="step-n">↗</span><div class="step-t">Про друзів</div><div class="step-b">«Як твої друзі переживають це?» — через турботу про інших підліток часто відкриває своє.</div></div>
+      <div class="step"><span class="step-n">↗</span><div class="step-t">Після кризи — рух разом</div><div class="step-b">Запропонуйте фізичну активність — не «щоб відволіктись», а «тому що тіло потребує».</div></div>
+    </div>
+  </div>
+  <div class="at-panel" id="a911">
+    <div class="al a-la"><span class="ai">📚</span><div class="al-body"><p><strong>9–11 клас: смисл і стійкість</strong> Старшокласники вже знають про ПТС, allostatic load і PTG. При кризі — питання смислу і майбутнього особливо гострі. Партнерська розмова, а не батьківська директива.</p></div></div>
+    <div class="step-grid" style="margin-top:1rem">
+      <div class="step"><span class="step-n">↗</span><div class="step-t">Визнайте невизначеність</div><div class="step-b">«Я теж не знаю що буде. Але я знаю що ми разом — і що ти маєш більше інструментів ніж думаєш».</div></div>
+      <div class="step"><span class="step-n">↗</span><div class="step-t">Відокремте ЗНО від кризи</div><div class="step-b">«Готуватись варто — навіть при невизначеності. Твої дії зараз — не залежать від того що може статись».</div></div>
+      <div class="step"><span class="step-n">↗</span><div class="step-t">Запитуйте про допомогу</div><div class="step-b">«Що я можу зробити для тебе?» — без припущень. Іноді відповідь «нічого, просто побудь» — і це теж відповідь.</div></div>
+      <div class="step"><span class="step-n">↗</span><div class="step-t">Слідкуйте за «flat affect»</div><div class="step-b">Тривала апатія і «нічого не відчуваю» після кризи — сигнал для фахівця, а не «треба менше ледарювати».</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PHRASES -->
+<section class="sec reveal" id="s-phrases">
+  <div class="eyebrow">Мова підтримки</div>
+  <h2>Що казати —<br>і <strong>що не казати</strong></h2>
+  <p class="lead">Шість пар фраз — однакова ситуація, різний ефект:</p>
+  <div class="phrase-box">
+    <div class="phrase-hdr">Дитина каже «мені страшно» або «мені погано»</div>
+    <div class="phrase-row">
+      <div class="pr-cell bad"><div class="pr-label bad">❌ Закриває</div><div class="pr-text">«Та в тебе все добре, не вигадуй»</div></div>
+      <div class="pr-cell good"><div class="pr-label good">✓ Відкриває</div><div class="pr-text">«Розкажи мені — що саме «погано»?»</div></div>
+    </div>
+  </div>
+  <div class="phrase-box">
+    <div class="phrase-hdr">Дитина хвилюється перед контрольною або іспитом</div>
+    <div class="phrase-row">
+      <div class="pr-cell bad"><div class="pr-label bad">❌ Тисне</div><div class="pr-text">«Ти просто маєш краще підготуватись»</div></div>
+      <div class="pr-cell good"><div class="pr-label good">✓ Підтримує</div><div class="pr-text">«Хвилюватись перед важливим — нормально. Що б допомогло зараз?»</div></div>
+    </div>
+  </div>
+  <div class="phrase-box">
+    <div class="phrase-hdr">Дитина «заморозилась» після сирени або вибуху</div>
+    <div class="phrase-row">
+      <div class="pr-cell bad"><div class="pr-label bad">❌ Лякає</div><div class="pr-text">«Що з тобою?! Прокинься! Нам треба іти!»</div></div>
+      <div class="pr-cell good-vio"><div class="pr-label good-vio">✓ Заземлює</div><div class="pr-text">«[Ім'я], я тут. Ти в безпеці. Відчуй підлогу під ногами. Ходімо разом»</div></div>
+    </div>
+  </div>
+  <div class="phrase-box">
+    <div class="phrase-hdr">Дитина плаче і не може пояснити чому</div>
+    <div class="phrase-row">
+      <div class="pr-cell bad"><div class="pr-label bad">❌ Квапить</div><div class="pr-text">«Заспокойся і поясни нормально»</div></div>
+      <div class="pr-cell good"><div class="pr-label good">✓ Дає простір</div><div class="pr-text">«Можеш не пояснювати. Я просто поруч»</div></div>
+    </div>
+  </div>
+  <div class="phrase-box">
+    <div class="phrase-hdr">Дитина каже «нема сенсу готуватись — невідомо що буде»</div>
+    <div class="phrase-row">
+      <div class="pr-cell bad"><div class="pr-label bad">❌ Заперечує</div><div class="pr-text">«Та нічого не станеться, не думай про це»</div></div>
+      <div class="pr-cell good-vio"><div class="pr-label good-vio">✓ Чесна відповідь</div><div class="pr-text">«Невизначеність реальна. І ти можеш діяти відповідно до своїх цінностей — навіть при ній»</div></div>
+    </div>
+  </div>
+  <div class="phrase-box">
+    <div class="phrase-hdr">Дитина говорить що «краще без неї» або «нема сенсу»</div>
+    <div class="phrase-row">
+      <div class="pr-cell bad"><div class="pr-label bad">❌ Ігнорує</div><div class="pr-text">«Та перестань, ти просто втомився/-лась»</div></div>
+      <div class="pr-cell good"><div class="pr-label good">✓ Запитує прямо</div><div class="pr-text">«Ти сказав/-ла щось важливе. Ти думаєш про те щоб заподіяти собі шкоду?» — і вислухати</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CHECKLIST -->
+<section class="sec reveal" id="s-check">
+  <div class="eyebrow">Щоденна підтримка</div>
+  <h2>Чекліст батьківської<br><em>підтримки</em></h2>
+  <p class="lead">Натисніть на пункт щоб відмітити. Стрес, тривога і криза — усі три потребують схожої основи:</p>
+  <div class="check-grid" id="checkGrid">
+    <div class="check-item" onclick="this.classList.toggle('done')"><div class="ci-box">✓</div><div class="ci-text">Я запитав/-ла дитину як їй сьогодні — і вислухав/-ла без поради</div></div>
+    <div class="check-item" onclick="this.classList.toggle('done')"><div class="ci-box">✓</div><div class="ci-text">Я не порівнював/-ла дитину з однолітками або собою в її віці</div></div>
+    <div class="check-item" onclick="this.classList.toggle('done')"><div class="ci-box">✓</div><div class="ci-text">Я дав/-ла дитині можливість помилитись без великої реакції</div></div>
+    <div class="check-item" onclick="this.classList.toggle('done')"><div class="ci-box">✓</div><div class="ci-text">Телефон не використовувався за годину до сну дитини</div></div>
+    <div class="check-item" onclick="this.classList.toggle('done')"><div class="ci-box">✓</div><div class="ci-text">Я запропонував/-ла спільну фізичну активність або прогулянку</div></div>
+    <div class="check-item" onclick="this.classList.toggle('done')"><div class="ci-box">✓</div><div class="ci-text">Я не обговорював/-ла тривожні новини при дитині без потреби</div></div>
+    <div class="check-item" onclick="this.classList.toggle('done')"><div class="ci-box">✓</div><div class="ci-text">Я поділився/-лась своєю емоцією («я теж хвилювався/-лась сьогодні»)</div></div>
+    <div class="check-item" onclick="this.classList.toggle('done')"><div class="ci-box">✓</div><div class="ci-text">Я підтвердив/-ла що відчуття дитини реальні — навіть якщо причина здається незначною</div></div>
+    <div class="check-item" onclick="this.classList.toggle('done')"><div class="ci-box">✓</div><div class="ci-text">Я НЕ казав/-ла «заспокойся», «не хвилюйся», «все добре»</div></div>
+    <div class="check-item" onclick="this.classList.toggle('done')"><div class="ci-box">✓</div><div class="ci-text">Я забезпечив/-ла регулярний і достатній сон для дитини</div></div>
+    <!-- Кризові пункти -->
+    <div class="check-item vio" onclick="this.classList.toggle('done vio')"><div class="ci-box">✓</div><div class="ci-text">🆘 Ми разом зробили дихання 4-4-6 після стресової події</div></div>
+    <div class="check-item vio" onclick="this.classList.toggle('done vio')"><div class="ci-box">✓</div><div class="ci-text">🆘 Новини сьогодні — не більше одного разу на годину і не перед сном</div></div>
+    <div class="check-item vio" onclick="this.classList.toggle('done vio')"><div class="ci-box">✓</div><div class="ci-text">🆘 Я зберіг/-ла спокійний голос поруч з дитиною під час стресу</div></div>
+    <div class="check-item vio" onclick="this.classList.toggle('done vio')"><div class="ci-box">✓</div><div class="ci-text">🆘 Після кризи — ми зберегли звичний розпорядок дня наскільки можливо</div></div>
+    <div class="check-item" onclick="this.classList.toggle('done')"><div class="ci-box">✓</div><div class="ci-text">Я слідкував/-ла за власним рівнем стресу — бо він передається дітям</div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- WHEN TO SEEK HELP -->
+<section class="sec reveal" id="s-help">
+  <div class="eyebrow">Коли звертатись</div>
+  <h2>Коли домашньої підтримки<br><em>недостатньо</em></h2>
+  <p class="lead">Деякі сигнали вимагають фахової допомоги — і це не означає що ви «погані батьки». Це означає що ситуація виходить за межі того, з чим справляються самостійно.</p>
+  <table class="tbl reveal">
+    <thead><tr><th>Сигнал</th><th>Тривалість</th><th>Перший крок</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Відмова від школи</strong> систематична</td><td>Більше 1–2 тижнів</td><td>Шкільний психолог + розмова з класним керівником</td></tr>
+      <tr><td><strong>Безсоння або надмірний сон</strong></td><td>Більше 2 тижнів</td><td>Педіатр (виключити медичну причину) + психолог</td></tr>
+      <tr><td><strong>Повна соціальна ізоляція</strong></td><td>Більше 2–3 тижнів</td><td>Дитячий психолог або психіатр</td></tr>
+      <tr><td><strong>Нав'язливі дії або думки</strong></td><td>Регулярно, заважає</td><td>Дитячий психіатр або КПТ-спеціаліст</td></tr>
+      <tr><td><strong>Фізичні симптоми без медичної причини</strong></td><td>Регулярно</td><td>Педіатр → психолог (соматизація)</td></tr>
+      <tr><td><strong>Флешбеки або кошмари після події</strong></td><td>4+ тижні</td><td>Травматерапевт — EMDR або соматична терапія. Не загальний психолог</td></tr>
+      <tr><td><strong>«Flat affect» — нічого не відчуває</strong></td><td>Більше 2 тижнів</td><td>Дитячий психіатр — виключити депресію або ПТСР</td></tr>
+      <tr><td><strong>Висловлювання про безнадійність</strong> або «краще без мене»</td><td>Навіть один раз</td><td>Одразу — 116 111 або психіатр. Не чекати</td></tr>
+      <tr><td><strong>Самоушкодження</strong></td><td>Навіть один раз</td><td>Одразу — дитячий психіатр. 116 111. 103 якщо є ризик</td></tr>
+    </tbody>
+  </table>
+  <div class="al a-te reveal">
+    <span class="ai">🔴</span>
+    <div class="al-body"><p><strong>Якщо дитина сказала щось про смерть або самоушкодження</strong> Не залишайте її саму. Запитайте прямо і спокійно: «Ти думаєш про те щоб заподіяти собі шкоду?» Зателефонуйте на 116 111 або 103. Негайно.</p></div>
+  </div>
+  <div class="al a-vio reveal">
+    <span class="ai">🧠</span>
+    <div class="al-body"><p><strong>ПТСР — медична умова, не «слабкість»</strong> Якщо після кризової події симптоми (флешбеки, уникання, заціпеніння, гіперпильність) тривають 4+ тижні — це може бути ПТСР. EMDR і соматична терапія — доведені методи лікування. Шкільний психолог → травматерапевт. 116 111 — перший крок для вас і для дитини.</p></div>
+  </div>
+  <div class="contacts">
+    <div class="cont-title">Контакти підтримки</div>
+    <div class="cont-sub">Для дитини, для вас — і для обох разом</div>
+    <div class="cont-grid">
+      <div class="cont-item">
+        <div class="cont-label">Дитяча гаряча лінія</div>
+        <div class="cont-num">116 111</div>
+        <div class="cont-desc">Анонімно · Безкоштовно · Цілодобово. Для дитини і для батьків що хвилюються</div>
+      </div>
+      <div class="cont-item">
+        <div class="cont-label">Психологічна підтримка</div>
+        <div class="cont-num">0 800 500 335</div>
+        <div class="cont-desc">Безкоштовно з мобільного. Для дорослих — у тому числі якщо ви самі в стресі</div>
+      </div>
+      <div class="cont-item">
+        <div class="cont-label">Екстрені служби</div>
+        <div class="cont-num">103 / 102</div>
+        <div class="cont-desc">При медичному стані або безпосередній загрозі</div>
+      </div>
+      <div class="cont-item">
+        <div class="cont-label">Шкільний психолог</div>
+        <div class="cont-desc">Перший крок при систематичній тривозі або зміні поведінки. Безкоштовно і доступно</div>
+      </div>
+    </div>
+  </div>
+  <div class="al a-tl reveal" style="margin-top:1.5rem">
+    <span class="ai">💙</span>
+    <div class="al-body"><p><strong>Ваш власний стрес і стійкість теж важливі</strong> Ви не можете наповнювати дитину з порожнього. Ваша власна регуляція — умова підтримки дитини. 0 800 500 335 — для вас теж. Це не слабкість. Це відповідальність.</p></div>
+  </div>
+</section>
+
+<footer class="final">
+  <div class="final-in">
+    <h2>Ваша присутність —<br><em>найпотужніший</em> інструмент</h2>
+    <p>Не правильні слова. Не правильні техніки. А те що ви тут, що ви намагаєтесь зрозуміти і що ви поруч — це і є основа психологічної безпеки дитини в часи стресу, тривоги і кризи.</p>
+    <p style="font-size:.82rem;color:rgba(255,255,255,.3);margin-top:1rem">«Стрес і тіло» · «Сила моєї думки» · «Як зберегти спокій під час кризових подій» · Гаряча лінія: 116 111</p>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>{
+  const p=(window.scrollY/(document.body.scrollHeight-window.innerHeight))*100;
+  document.getElementById('prog').style.width=p+'%';
+  const sections=['s-signals','s-stress','s-anxiety','s-crisis','s-age','s-phrases','s-check','s-help'];
+  const btns=document.querySelectorAll('.tnb');
+  sections.forEach((id,i)=>{
+    const el=document.getElementById(id);if(!el)return;
+    const r=el.getBoundingClientRect();
+    if(r.top<=window.innerHeight*.5&&r.bottom>=window.innerHeight*.3){
+      btns.forEach(b=>b.classList.remove('on'));
+      if(btns[i])btns[i].classList.add('on');
+    }
+  });
+});
+function goTo(id){document.getElementById(id)?.scrollIntoView({behavior:'smooth',block:'start'});}
+function swAge(id){
+  document.querySelectorAll('.at-panel').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.at-btn').forEach(b=>b.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  event.target.classList.add('on');
+}
+document.querySelectorAll('.reveal').forEach(r=>
+  new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('vis')),{threshold:.06}).observe(r)
+);
+// checkbox toggle for vio items
+document.querySelectorAll('.check-item.vio').forEach(item=>{
+  item.onclick=function(){
+    this.classList.toggle('done');
+    this.classList.toggle('vio');
+    if(!this.classList.contains('done'))this.classList.add('vio');
+  };
+});
+</script>
+<style id="srcblk">.sb{max-width:960px;margin:3rem auto 4rem;padding:1.4rem 1.5rem;border:1px solid rgba(128,128,128,.35);border-radius:12px;background:rgba(128,128,128,.09);line-height:1.6;color:inherit;font-size:.9rem;position:relative;z-index:5}.sb h2{font-size:1.15rem;margin:0 0 .6rem}.sb h3{font-size:.95rem;margin:1.1rem 0 .4rem}.sb ol{padding-left:1.3rem}.sb li{margin:.35rem 0;font-size:.84rem;opacity:.92}.sb .nt{font-size:.78rem;opacity:.78;margin:.6rem 0}.sb table{width:100%;border-collapse:collapse;font-size:.82rem}.sb td,.sb th{text-align:left;padding:.4rem .5rem;border-bottom:1px solid rgba(128,128,128,.3);vertical-align:top}.sb .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.6rem}.sb .cards div{border:1px solid rgba(128,128,128,.3);border-radius:10px;padding:.7rem .9rem;font-size:.82rem}.sb .cards i{font-style:normal;font-size:1.2rem;display:block}.sb details summary{cursor:pointer;font-weight:600}</style><!--srcblk--><div class="sb"><h2>📖 Джерела й що почитати</h2><h3>Використані джерела</h3><ol><li>McEwen, B. S. (1998). Protective and damaging effects of stress mediators. <i>New England Journal of Medicine, 338</i>(3), 171–179.</li><li>Thayer, J. F., Åhs, F., Fredrikson, M., Sollers, J. J., &amp; Wager, T. D. (2012). A meta-analysis of heart rate variability and neuroimaging studies. <i>Neuroscience &amp; Biobehavioral Reviews, 36</i>(2), 747–756.</li><li>Sapolsky, R. M. (2004). <i>Why Zebras Don’t Get Ulcers</i> (3rd ed.). Henry Holt.</li><li>Porges, S. W. (2011). <i>The Polyvagal Theory</i>. W. W. Norton. (Теорія дискусійна: використовуйте як практичну метафору.)</li><li>Pennebaker, J. W. (1997). Writing about emotional experiences as a therapeutic process. <i>Psychological Science, 8</i>(3), 162–166.</li><li>Keller, A., Litzelman, K., Wisk, L. E., et al. (2012). Does the perception that stress affects health matter? <i>Health Psychology, 31</i>(5), 677–684.</li><li>Beck, A. T., Rush, A. J., Shaw, B. F., &amp; Emery, G. (1979). <i>Cognitive Therapy of Depression</i>. Guilford Press.</li><li>LeDoux, J. (1996). <i>The Emotional Brain</i>. Simon &amp; Schuster.</li><li>Hofmann, S. G., Asnaani, A., Vonk, I. J. J., Sawyer, A. T., &amp; Fang, A. (2012). The efficacy of cognitive behavioral therapy: A review of meta-analyses. <i>Cognitive Therapy and Research, 36</i>(5), 427–440.</li><li>Greenberger, D., &amp; Padesky, C. A. (1995). <i>Mind Over Mood</i>. Guilford Press.</li><li>Hayes, S. C., Strosahl, K. D., &amp; Wilson, K. G. (1999). <i>Acceptance and Commitment Therapy</i>. Guilford Press.</li><li>Wells, A. (2009). <i>Metacognitive Therapy for Anxiety and Depression</i>. Guilford Press.</li><li>Wegner, D. M., Schneider, D. J., Carter, S. R., &amp; White, T. L. (1987). Paradoxical effects of thought suppression. <i>Journal of Personality and Social Psychology, 53</i>(1), 5–13.</li><li>Craske, M. G., Kircanski, K., Zelikowsky, M., et al. (2008). Optimizing inhibitory learning during exposure therapy. <i>Behaviour Research and Therapy, 46</i>(1), 5–27.</li></ol><h3>Що почитати батькам</h3><table><tr><th>Назва</th><th>Автор / видання</th><th>Чому корисно</th></tr><tr><td>How to Talk So Kids Will Listen &amp; Listen So Kids Will Talk</td><td>Faber A., Mazlish E.</td><td>Практичні фрази</td></tr><tr><td>Raising an Emotionally Intelligent Child</td><td>Gottman J., DeClaire J., 1997</td><td>Емоційне коучинг-спілкування</td></tr><tr><td>The Whole-Brain Child</td><td>Siegel D. J., Bryson T. P., 2011</td><td>Емоції дитини</td></tr></table><p class="nt">Бібліографічні дані наведено за знаннями автора без звірки з першоджерелами в мережі: перед цитуванням перевірте видання, рік, DOI та доступність. Українські переклади книг можуть існувати або ні. Зведений реєстр: project_sources.html.</p><p class="nt">Допомога: 116 111 (безкоштовно, анонімно, цілодобово) · 0 800 500 335 · 102 / 103.</p></div><!--/srcblk--><div class="mo-foot"><span><a href="../index.html">Усі теми</a></span><span>Це остання тема.</span></div><script src="../assets/config.js"></script><script src="../assets/site.js"></script></body>
+</html>
